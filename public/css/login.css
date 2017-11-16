@@ -1,0 +1,239 @@
+body{
+  background-color: #f1f1f1;
+  color : #000;
+}
+
+div h3 span{
+  color : #000;
+  font-size:14px;
+}
+
+div span {
+  font-weight: 200;
+}
+
+h1{
+  font-weight: 200;
+}
+
+.login_box{
+  background: #fff;
+  width:35%;
+  position:absolute;
+  top:13%;
+  left:32.5%;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 1);
+  -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 1);
+  box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 1);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  margin: 0 auto 50px;
+}
+
+@media (min-width: 501px) and (max-width: 767px) {
+
+  .login_box{
+    background: #fff;
+    width:90%;
+    height:80%;
+    position:absolute;
+    top:5%;
+    left:5%;
+    margin: 0 auto;
+
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+    -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+    box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+}
+
+.image-circle{
+  width: 170px;
+  /*height: 175px;*/
+  border: 4px solid #FFF;
+  margin: 10px;
+}
+
+.follow{
+  background-color:#FC563B;
+  height: 80px;
+  cursor:pointer;
+}
+
+.follow:hover {
+  background-color:#F22F26;
+  height: 80px;
+  cursor:pointer;
+}
+
+.login_control{
+  background-color:#FFF;
+  padding:10px 20px 30px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.control {
+  color:#000;
+  margin:10px;
+}
+
+.label {
+  color: #cc0000;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-control{
+  color: #000000 !important;
+  font-size: 18px;
+  border: none;
+  padding: 25px;
+  padding-left: 10px;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 10px;
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus{
+  border-radius: 0px;
+  border-bottom: 1px solid #FC563B;
+  margin-bottom: 10px;
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.btn-orange{
+
+  margin: 5px;
+  padding: 5px;
+  width: 150px;
+  font-size: 20px;
+  font-weight: inherit;
+  height:50px;
+
+  color: #555;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+37,cfcfcf+100 */
+  background: #eeeeee; /* Old browsers */
+  background: -moz-linear-gradient(top,  #eeeeee 0%, #eeeeee 37%, #cfcfcf 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(37%,#eeeeee), color-stop(100%,#cfcfcf)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #eeeeee 0%,#eeeeee 37%,#cfcfcf 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #eeeeee 0%,#eeeeee 37%,#cfcfcf 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #eeeeee 0%,#eeeeee 37%,#cfcfcf 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #eeeeee 0%,#eeeeee 37%,#cfcfcf 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cfcfcf',GradientType=0 ); /* IE6-9 */
+  font-size: 13px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+.btn-orange:hover {
+  background-color: #666;
+  border-radius: 0px;
+  margin: 5px;
+  padding: 5px;
+  width: 150px;
+  font-size: 20px;
+  font-weight: inherit;
+  color:#FFF !important;
+}
+
+.login-btn{
+  font-size: 15px;
+  padding: 12px 24px;
+}
+
+.line{
+  border-bottom : 2px solid #e3e3e3;
+}
+
+.line h3{
+  color:#666;
+}
+
+.outter{
+  padding: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.29);
+  border-radius: 3%;
+  margin-top: 10px;
+}
+
+.ins_sub{
+  font-size: 30px;
+  margin: 20px;
+  color: #333;
+  line-height: 40px;
+}
+
+.singapore-login {
+  font-size: 27px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+@media (max-width: 500px) {
+
+  .login_box{
+    background: #fff;
+    width:90%;
+    height:80%;
+    position:absolute;
+    top:5%;
+    left:5%;
+    margin: 0 auto;
+
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+    -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+    box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+
+  .image-circle{
+    width: 80px;
+    height: 80px;
+    border: 4px solid #FFF;
+    margin: 10px;
+  }
+
+  .singapore-login {
+    font-size: 17px;
+    color: #666;
+    text-transform: uppercase;
+  }
+
+  .line h3 {
+    color: #666;
+    font-size: 12px;
+  }
+
+  .ins_sub {
+    font-size: 20px;
+    margin: 10px;
+    color: #333;
+    text-align: center;
+  }
+
+  .form-control {
+    color: #000000 !important;
+    font-size: 12px;
+    border: none;
+    padding: 15px;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .login-btn {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+}
