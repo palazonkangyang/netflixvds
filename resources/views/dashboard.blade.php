@@ -48,6 +48,8 @@
         </a>
       </div><!-- end col-md-3 -->
 
+      @if(Auth::user()->role == 0)
+
       <div class="col-md-3 col-sm-3 col-xs-6">
         <a href="/settings/partners" class="magic-link">
           <div class="dashboard-div-wrapper bk-clr-four">
@@ -60,6 +62,8 @@
           </div><!-- end dashboard-div-wrapper -->
         </a>
       </div><!-- end col-md-3 -->
+
+      @endif
 
     </div><!-- end row -->
 

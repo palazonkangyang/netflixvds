@@ -394,3 +394,7 @@ DASHBOARD  STYLES
   vertical-align: middle;
   float: none;
 }
+
+.disabled-link{
+  color: #777;
+}

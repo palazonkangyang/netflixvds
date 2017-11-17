@@ -134,6 +134,8 @@
                 <a href="/settings/edit/user/{{$data->id}}" class="action">Edit</a>
                 @if($data->login_user =="false")
                 | <a href="/settings/delete/user/{{$data->id}}" class="action">Remove</a>
+                @else
+                | <span href="#" class="disabled-link" title="You cannot delete the login user.">Remove</span>
                 @endif
               </td>
             </tr>
@@ -193,7 +195,7 @@
   $(function() {
 
     $("#checkAll").click(function () {
-			$('#user-lists input:checkbox').not(this).prop('checked', this.checked);
+			$('#user-lists input:checkbox').not(":disabled").not(this).prop('checked', this.checked);
 		});
 
     $('#partner-id').change(function() {

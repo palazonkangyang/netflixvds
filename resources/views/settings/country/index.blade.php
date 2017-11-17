@@ -90,6 +90,8 @@
                 <a href="/settings/edit/country/{{$data->id}}" class="action">Edit</a>
                 @if($data->editable == "")
                 | <a href="/settings/delete/country/{{$data->id}}" class="action">Remove</a>
+                @else
+                | <span href="#" class="disabled-link" title="Stores are created under this country. You cannot remove it. Unless Stores have been deleted.">Remove</span>
                 @endif
               </td>
             </tr>

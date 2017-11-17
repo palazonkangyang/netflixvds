@@ -43,10 +43,14 @@ class AuthController extends Controller
 
     $user = User::where('username', $credentials['username'])->first();
 
-
-
     if ( !$user ) {
 			$request->session()->flash('error', 'Unauthorised User Access !! INVALID User ID or Password !!');
+			return redirect()->back();
+    }
+
+    elseif($user->role == 2)
+    {
+      $request->session()->flash('error', 'This role cannot access the system.');
 			return redirect()->back();
     }
 
