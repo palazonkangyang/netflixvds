@@ -402,3 +402,13 @@ DASHBOARD  STYLES
 .disabled-link{
   color: #777;
 }
+
+footer{
+  font-size: 9px;
+  color: #a4a3a1;
+  line-height: 12px;
+}
+
+footer a{
+  color: #a4a3a1;
+}

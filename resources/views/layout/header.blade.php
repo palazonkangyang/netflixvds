@@ -42,7 +42,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li class="last"><a href="/auth/logout">Logout</a></li>
+            <li class="last hover-link"><a href="/auth/logout">Logout</a></li>
           </ul>
         </div>
       </div><!-- end col-md-12 -->
