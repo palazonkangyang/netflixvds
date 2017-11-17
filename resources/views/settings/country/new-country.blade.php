@@ -55,7 +55,7 @@
                   <hr />
                   <button type="submit" class="btn btn-default margin-right" id="submit">Submit</button>
                   <button type="reset" class="btn btn-default margin-right" id="cancel">Cancel</button>
-                  <a class="btn btn-default" href="{{ URL::previous() }}">back</a>
+                  <a class="btn btn-default" href="{{ URL::previous() }}">Back</a>
 
                   {!!Form::close()!!}
                 </div><!-- end col-md-12 -->
