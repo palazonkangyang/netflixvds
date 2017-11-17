@@ -32,7 +32,7 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-12 no-padding-left no-padding-right">
 
           <div class="panel panel-default">
             <div class="panel-heading"><h4>SMTP Settings</h4></div><!-- end panel-heading -->
@@ -49,35 +49,35 @@
 
                   <div class="form-group">
           		   		<label class="col-md-2">SMTP Host <span class="text-danger">*</span></label>
-          		    	<div class="col-md-10">
+          		    	<div class="col-md-6">
           		    	  {!! Form::text('host', $settings->host, ['class'=>'form-control smtp-host', 'id'=>'smtp-host']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->
 
                   <div class="form-group">
           		   		<label class="col-md-2">SMTP Username <span class="text-danger">*</span></label>
-          		    	<div class="col-md-10">
+          		    	<div class="col-md-6">
           		    	  {!! Form::text('username', $settings->username, ['class'=>'form-control smtp-username', 'id'=>'smtp-username']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->
 
                   <div class="form-group">
           		   		<label class="col-md-2">SMTP Password <span class="text-danger">*</span></label>
-          		    	<div class="col-md-10">
-          		    	  {!! Form::password('password', ['class'=>'form-control smtp-password', 'id'=>'smtp-password']) !!}
+          		    	<div class="col-md-6">
+          		    	  {!! Form::text('password', $settings->password, ['class'=>'form-control smtp-password', 'id'=>'smtp-password']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->
 
                   <div class="form-group">
           		   		<label class="col-md-2">SMTP Port <span class="text-danger">*</span></label>
-          		    	<div class="col-md-10">
+          		    	<div class="col-md-6">
           		    	  {!! Form::text('port', $settings->port, ['class'=>'form-control smtp-port', 'id'=>'smtp-port']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->
 
                   <div class="form-group">
           		   		<label class="col-md-2">Require SSL</label>
-          		    	<div class="col-md-10" style="margin-top: 10px;">
+          		    	<div class="col-md-6" style="margin-top: 10px;">
                       {!! Form::checkbox('require_ssl', 1, $settings->require_ssl, ['class'=>'require-ssl', 'id'=>'require-ssl']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->

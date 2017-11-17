@@ -672,7 +672,7 @@ h5 a:hover {
   margin-right: 15px;
   width: 121px;
   float: left;
-  margin: 0 48px 0 24px;
+  margin: 0 48px 0 0;
 }
 
 .menu-section .nav > li > a:hover, .menu-section .nav > li > a:focus, .menu-top-active {

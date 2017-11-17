@@ -32,7 +32,7 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-12 no-padding-left no-padding-right">
 
           <div class="panel panel-default">
             <div class="panel-heading"><h4>NEW Country</h4></div><!-- end panel-heading -->
@@ -45,7 +45,7 @@
 
                   <div class="form-group">
           		   		<label class="col-md-2">Country Name</label>
-          		    	<div class="col-md-10">
+          		    	<div class="col-md-6">
           		    	  {!! Form::text('country_name',NULL,['class'=>'form-control country-name', 'id'=>'country']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->

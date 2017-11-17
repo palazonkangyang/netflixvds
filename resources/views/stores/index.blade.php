@@ -85,12 +85,12 @@
         <table class="col-md-12 table-bordered table-striped table-condensed" id="store-lists">
           <thead>
             <th width="3%" class="text-center"><input type="checkbox" id="checkAll"></th>
-            <th>Partner</th>
-            <th>Country</th>
-            <th>Store</th>
-            <th>Contact Name</th>
-            <th>Contact No</th>
-            <th>Action</th>
+            <th class="col-md-2">Partner</th>
+            <th class="col-md-2">Country</th>
+            <th class="col-md-2">Store</th>
+            <th class="col-md-2">Contact Name</th>
+            <th class="col-md-2">Contact No</th>
+            <th class="col-md-1">Action</th>
           </thead>
 
           @if(count($stores) > 0)

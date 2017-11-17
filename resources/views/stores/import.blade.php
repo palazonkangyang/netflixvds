@@ -44,7 +44,7 @@
                   {!!Form::open(['class'=>'submit_now'])!!}
 
                   <div class="form-group">
-          		    	<div class="col-md-5">
+          		    	<div class="col-md-5 no-padding-left">
           		    	  {!! Form::text('import',NULL,['class'=>'form-control partner-name', 'id'=>'partner']) !!}
           		    	</div>
 
@@ -53,10 +53,18 @@
                     </div><!-- end col-md-1 -->
 
                     <div class="col-md-1">
-                      <a href="#" class="btn btn-default">Import</a>
+                      <button type="button" class="btn btn-default">Import</button>
                     </div><!-- end col-md-1 -->
           		  	</div><!-- end form-group -->
 
+                  {!! Form::close() !!}
+
+                </div><!-- end col-md-12 -->
+
+                <div class="col-md-12">
+                  <p>
+                    Tip: Please browse and select a CSV file to import stores. Get the template <a href="#">here</a>.
+                  </p>
                 </div><!-- end col-md-12 -->
 
               </div><!-- end row -->

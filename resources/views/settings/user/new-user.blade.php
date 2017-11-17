@@ -32,7 +32,7 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-12 no-padding-left no-padding-right">
 
           <div class="panel panel-default">
             <div class="panel-heading"><h4>New User</h4></div><!-- end panel-heading -->

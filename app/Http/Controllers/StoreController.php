@@ -85,7 +85,7 @@ class StoreController extends Controller
     $stores = $q->leftjoin('country', 'store.country_id', 'country.id')
               ->leftjoin('partner', 'store.partner_id', 'partner.id')
               ->select('store.*', 'country.country_name', 'partner.partner_name')
-              ->orderBy('id', 'asc')
+              ->orderBy('store.id', 'asc')
               ->paginate(10);
 
     return view('stores.search-stores', [

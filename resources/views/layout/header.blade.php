@@ -2,7 +2,7 @@
 
 <div class="navbar navbar-inverse set-radius-zero">
   <div class="container">
-    <div class="col-md-6">
+    <div class="col-md-6 no-padding-left">
       <div class="navbar-header" style="margin-top: 10px;">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
@@ -16,7 +16,7 @@
       </div><!-- end navbar-header -->
     </div><!-- end col-md-6 -->
 
-    <div class="navbar-collapse collapse">
+    <div class="navbar-collapse collapse no-padding-right">
       <ul id="menu-top" class="nav navbar-nav navbar-right">
         <li><a class="#" href="#"><i class="fa fa-video-camera"></i> Videos</a></li>
         <li><a class="#" href="#"><i class="fa fa-calendar"></i> Schedules</a></li>
