@@ -73,9 +73,9 @@ class UserController extends Controller
     {
       $keyword = trim($input['username']);
 
-      $q->orwhere('username', 'like', '%' . $keyword . '%');
-      $q->orwhere('full_name', 'like', '%' . $keyword . '%');
-      $q->orwhere('email', 'like', '%' . $keyword . '%');
+      $q->where('username', 'like', '%' . $keyword . '%');
+      // $q->orwhere('full_name', 'like', '%' . $keyword . '%');
+      // $q->orwhere('email', 'like', '%' . $keyword . '%');
     }
 
     if($input['store_id'] != 0)
