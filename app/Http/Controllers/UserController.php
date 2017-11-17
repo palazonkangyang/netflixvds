@@ -73,9 +73,9 @@ class UserController extends Controller
     {
       $keyword = trim($input['username']);
 
-      $q->where('username', 'like', '%' . $keyword . '%');
-      // $q->orwhere('full_name', 'like', '%' . $keyword . '%');
-      // $q->orwhere('email', 'like', '%' . $keyword . '%');
+      $q->orwhere('username', 'like', '%' . $keyword . '%');
+      $q->orwhere('full_name', 'like', '%' . $keyword . '%');
+      $q->orwhere('email', 'like', '%' . $keyword . '%');
     }
 
     if($input['store_id'] != 0)
@@ -148,7 +148,7 @@ class UserController extends Controller
   }
 
   // Add New User
-  public function postNewUser(Request $request, $id)
+  public function postNewUser(Request $request)
   {
     $input = array_except($request->all(), '_token');
 
