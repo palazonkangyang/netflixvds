@@ -203,6 +203,10 @@ LOGO SECTION STYLES
   color: #e50914;
 }
 
+#menu-top a:hover{
+  color: #e50914;
+}
+
 .menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
   background-color: #eee!important;
   color:#000!important;
@@ -303,7 +307,7 @@ DASHBOARD  STYLES
 }
 
 .action:hover{
-  text-decoration: underline;
+  color: #e50914;
 }
 
 .btn-right{
