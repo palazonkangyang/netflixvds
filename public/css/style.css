@@ -1,0 +1,396 @@
+
+/*=============================================================
+Authour URL: www.designbootstrap.com
+
+http://www.designbootstrap.com/
+
+License: MIT
+
+http://opensource.org/licenses/MIT
+
+100% Free To use For Personal And Commercial Use.
+
+IN EXCHANGE JUST TELL PEOPLE ABOUT THIS WEBSITE
+
+========================================================  */
+
+
+/* =============================================================
+GENERAL STYLES
+============================================================ */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto); /* FREE GOOGLE FONT */
+
+@font-face {
+  font-family: netflixfont;
+  src: url(../fonts/NetflixSans_A_Lt.ttf);
+}
+
+body {
+  font-family: 'netflixfont', sans-serif;
+  line-height: 18px;
+}
+
+.set-radius-zero {
+  border-radius: 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+}
+
+.content-wrapper {
+  margin-top: 40px;
+  min-height: 600px;
+  padding-bottom: 60px;
+}
+
+.page-head-line {
+  font-weight: 900;
+  padding-bottom: 20px;
+  border-bottom: none;
+  text-transform: uppercase;
+  color: #21201e;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+.login-icon {
+  height: 60px;
+  width: 60px;
+  padding: 13px;
+  border-radius: 50%;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  cursor:pointer;
+  background-color:#F0677C;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+}
+
+b, strong{
+  color: #f4f4f4;
+}
+
+.dz-size > strong{
+  color: #ccc;
+}
+/* =============================================================
+HEADER SECTION STYLES
+============================================================ */
+header {
+  background-color: #e50914;
+  color: #555;
+  padding: 10px;
+  text-align: right;
+  -webkit-box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.4);
+  box-shadow: 1px 0px 10px 0px rgba(0,0,0,0.4);
+  z-index: 1;
+  position: relative;
+  border-bottom: 1px solid #bbb;
+}
+
+
+/* =============================================================
+LOGO SECTION STYLES
+============================================================ */
+.left-div {
+  padding-left: 30px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  width: 250px;
+  padding-top: 30px;
+  float:none;
+}
+
+/* USER SETTINGS DIV */
+.user-settings-wrapper .nav > li > a {
+  position: relative;
+  display: block;
+  padding: 15px 18px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: #F0677C;
+  color: #fff;
+}
+
+.user-settings-wrapper {
+  margin-top: 10px;
+}
+
+.user-settings-wrapper li {
+  display: inline-block;
+}
+
+.user-settings-wrapper .dropdown-settings {
+  width: 200px;
+  padding: 10px;
+}
+
+.user-settings-wrapper .nav > li > a:hover,.user-settings-wrapper .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #C36464!important;
+}
+
+.user-settings-wrapper img {
+  height: 64px;
+  width: 64px;
+  border: 1px solid #000000;
+}
+
+.user-settings-wrapper .dropdown-menu {
+  margin: 0px;
+  border-radius: 0px!important;
+  -moz-border-radius: 0px!important;
+  -webkit-border-radius: 0px!important;
+}
+
+.user-settings-wrapper .btn {
+  border-radius: 0px!important;
+  -moz-border-radius: 0px!important;
+  -webkit-border-radius: 0px!important;
+}
+
+.user-settings-wrapper .media-heading {
+  padding-top: 10px;
+}
+
+/* MENU LINKS SECTION*/
+
+.menu-section {
+  background-color: #990000;
+  z-index: 9;
+  position: relative;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+}
+
+#menu-top a {
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 15px;
+  margin-top:20px;
+  text-transform: capitalize;
+}
+
+.menu-top-active {
+  background-color: #fff;
+  color:#000!important;
+}
+
+#menu-top > .active > a{
+  color: #e50914;
+}
+
+.menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
+  background-color: #eee!important;
+  color:#000!important;
+}
+
+.menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
+  background-color: #F0677C!important;
+}
+
+.navbar-inverse {
+  background-color: #fff;
+  border-color: transparent;
+}
+
+.navbar-toggle {
+  background-color: #c1c1c1;
+  border: 1px solid #fff;
+  margin-top: 22px!important;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+/* =============================================================
+FOOTER SECTION STYLES
+============================================================ */
+footer {
+  padding: 20px;
+  color: #a4a3a1;
+  font-size: 12px;
+  background: #21201e;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  border-top:1px solid #555;
+}
+
+footer a, footer a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*==============================================
+DASHBOARD  STYLES
+=============================================*/
+
+/* DASHBOARD ICONS */
+
+.bk-clr-one {
+  background-color: #B9B739;
+}
+
+.bk-clr-two {
+  background-color: #F94C4C;
+}
+
+.bk-clr-three {
+  background-color: #119c7e;
+}
+
+.bk-clr-four {
+  background-color: #b739b9;
+}
+
+.dashboard-div-icon {
+  height: 75px;
+  width: 75px;
+  border: 2px solid #fff;
+  padding: 20px;
+  border-radius: 50%;
+  -webkit-border-radius:50%;
+  -moz-border-radius:50%;
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.dashboard-div-wrapper {
+  border-radius: 5px;
+  text-align: center;
+  padding: 15px;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.dashboard-div-wrapper .progress {
+  height: 2px;
+}
+
+.margin-right{
+  margin-right: 10px;
+}
+
+.form-group{
+  overflow: hidden;
+}
+
+.action:hover{
+  text-decoration: underline;
+}
+
+.btn-right{
+  margin-right: 20px;
+}
+
+/* NOTICE BOARD */
+
+
+.notice-board .panel {
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+.notice-board ul {
+  padding-left: 0px;
+  list-style: none;
+}
+
+.notice-board li {
+  padding: 10px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.notice-board li span {
+  margin-right: 10px;
+  border: 1px solid #DBDBDB;
+  padding: 5px;
+}
+
+.notice-board li a, li a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+/* SOCIAL BUTTONS */
+.btn-social {
+  color: white;
+  opacity: 0.8;
+}
+
+.btn-social:hover {
+  color: white;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+}
+
+.btn-twitter {
+  background-color: #00aced;
+}
+
+.btn-linkedin {
+  background-color: #0e76a8;
+}
+
+.btn-google {
+  background-color: #c32f10;
+}
+
+#select-client, #select-operator{
+  display: none;
+}
+
+.no-padding-left{
+  padding-left: 0!important;
+}
+
+.no-padding-right{
+  padding-right: 0!important;
+}
+
+.remove-btn{
+  cursor: pointer;
+  margin-top: 11px;
+}
+
+#fileUpload{
+  cursor: pointer;
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
