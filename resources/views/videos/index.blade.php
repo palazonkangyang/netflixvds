@@ -107,13 +107,13 @@
               <td>{{ $data->date }}</td>
               <td>{{ $data->code }}</td>
               <td>{{ $data->title }}</td>
-              <td></td>
+              <td class="text-center"><img width="50px" src="{{ URL::asset('uploads/thumb_images/'. $data->thumbnail_name) }}" /></td>
               <td>{{ $data->description }}</td>
               <td>{{ $data->duration }}</td>
               <td>{{ $data->category_name }}</td>
               <td>
                 <a href="/videos/edit/{{ $data->id }}" class="action">Edit</a> |
-                <a href="/videos/delete/{{ $data->id }}" class="action">Remove</a>
+                <a href="/videos/delete/{{ $data->id }}" class="action remove-item">Remove</a>
               </td>
             </tr>
             @endforeach
@@ -152,6 +152,8 @@
           </div>
         </div><!-- end col-md-4 -->
       </div><!-- end row -->
+
+      {!! Form::close() !!}
 
     </div><!-- end wrap-content -->
 
@@ -216,6 +218,12 @@
 				$(".alert-danger").removeClass("bg-danger alert alert-error");
 				$(".alert-danger").empty();
 			}
+    });
+
+    $("#video-lists").on('click', '.remove-item', function() {
+      if (!confirm("Are you sure?")){
+        return false;
+      }
     });
 
   });

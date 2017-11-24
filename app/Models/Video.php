@@ -10,9 +10,10 @@ class Video extends Model
     'date',
     'code',
     'title',
+    'video_name',
+    'thumbnail_name',
     'description',
     'duration',
-    'image',
     'category_id'
   ];
 }

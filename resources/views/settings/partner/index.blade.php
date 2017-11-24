@@ -89,7 +89,9 @@
               <td>
                 <a href="/settings/edit/partner/{{$data->id}}" class="action">Edit</a>
                 @if($data->editable == "")
-                | <a href="/settings/delete/partner/{{$data->id}}" class="action">Remove</a>
+                | <a href="/settings/delete/partner/{{$data->id}}" class="action remove-item">Remove</a>
+                @else
+                | <span href="#" class="disabled-link" title="Stores are created under this partner. You cannot remove it. Unless Stores have been deleted.">Remove</span>
                 @endif
               </td>
             </tr>
@@ -188,6 +190,12 @@
 				$(".alert-danger").removeClass("bg-danger alert alert-error");
 				$(".alert-danger").empty();
 			}
+    });
+
+    $("#partner-lists").on('click', '.remove-item', function() {
+      if (!confirm("Are you sure?")){
+        return false;
+      }
     });
 
   });

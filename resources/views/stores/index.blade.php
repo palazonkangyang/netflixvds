@@ -106,7 +106,7 @@
               <td>{{ isset($data->contact_no) ? '+ ' . $data->contact_no : $data->contact_no }}</td>
               <td>
                 <a href="/stores/edit/{{ $data->id }}" class="action">Edit</a> |
-                <a href="/stores/delete/{{ $data->id }}" class="action">Remove</a>
+                <a href="/stores/delete/{{ $data->id }}" class="action remove-item">Remove</a>
               </td>
             </tr>
             @endforeach
@@ -146,9 +146,9 @@
         </div><!-- end col-md-4 -->
       </div><!-- end row -->
 
-    </div><!-- end wrap-content -->
+      {!! Form::close() !!}
 
-    {!! Form::close() !!}
+    </div><!-- end wrap-content -->
 
   </div><!-- end container -->
 </div><!-- end content-wrapper -->
@@ -233,6 +233,12 @@
 				$(".alert-danger").removeClass("bg-danger alert alert-error");
 				$(".alert-danger").empty();
 			}
+    });
+
+    $("#store-lists").on('click', '.remove-item', function() {
+      if (!confirm("Are you sure?")){
+        return false;
+      }
     });
 
   });

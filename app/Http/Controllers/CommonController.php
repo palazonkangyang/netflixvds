@@ -33,7 +33,59 @@ class CommonController extends Controller
     ]);
   }
 
-  // Get Partners
+  // Get Video Name
+  public function SearchVideoName()
+  {
+    $title = Input::get('term');
+		$results = array();
+
+    $queries = Video::where('title', 'like', '%'.$title.'%')
+							 ->orderBy('title', 'asc')
+							 ->take(10)
+							 ->get();
+
+    foreach ($queries as $query)
+		{
+			$results[] = [
+				'id' => $query->id,
+				'value' => $query->title
+			];
+		}
+
+		return response()->json($results);
+  }
+
+  // Get Store Name
+  public function SearchStoreName()
+  {
+    $partner_id = Input::get('partner_id');
+    $store_name = Input::get('term');
+    // $partner_id = 5;
+    // $store_name = "Mac";
+		$results = array();
+
+    $queries = Store::leftjoin('country', 'store.country_id', '=', 'country.id')
+               ->where('store_name', 'like', '%'.$store_name.'%')
+               ->where('partner_id', $partner_id)
+							 ->orderBy('store_name', 'asc')
+               ->select('store.*', 'country.country_name')
+							 ->take(10)
+							 ->get();
+
+    foreach ($queries as $query)
+		{
+			$results[] = [
+				'store_id' => $query->id,
+        'country_id' => $query->country_id,
+        'country_name' => $query->country_name,
+				'value' => $query->store_name
+			];
+		}
+
+		return response()->json($results);
+  }
+
+  // Get Country Name
   public function SearchCountryName()
   {
     $country_name = Input::get('term');

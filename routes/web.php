@@ -14,7 +14,11 @@
 Route::get('/', ['as' => 'login-page', 'uses' => 'AuthController@login']);
 Route::get('/auth/logout', ['as' => 'logout-page', 'uses' => 'AuthController@logout']);
 
+Route::get('/client/login', ['as' => 'client-login-page', 'uses' => 'ClientController@login']);
+Route::get('/client/logout', ['as' => 'client-logout-page', 'uses' => 'ClientController@logout']);
+
 Route::post('/account/login', ['as' => 'post-login-page', 'uses' => 'AuthController@postAuthenticate']);
+Route::post('/client/login', ['as' => 'client-post-login-page', 'uses' => 'ClientController@postAuthenticate']);
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -24,6 +28,9 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/get-store', ['as' => 'get-store-page', 'uses' => 'CommonController@getStore']);
   Route::get('/check-username', ['as' => 'check-username-page', 'uses' => 'CommonController@CheckUsername']);
   Route::get('/dashboard', ['as' => 'dashboard-page', 'uses' => 'CommonController@getDashboard']);
+
+  Route::get('/search/video-name', ['as' => 'search-video-name-page', 'uses' => 'CommonController@SearchVideoName']);
+  Route::get('/search/store-name', ['as' => 'search-store-name-page', 'uses' => 'CommonController@SearchStoreName']);
 
   Route::post('file/uploadFiles', 'UploadController@uploadFiles');
   Route::get('file/removeFiles/{name}', 'UploadController@removeFiles');
@@ -37,11 +44,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(["post", "get"], '/search-videos', ['as' => 'search-videos-page', 'uses' => 'VideoController@SearchVideos']);
 
     Route::post('/new-video', ['as' => 'post-new-video-page', 'uses' => 'VideoController@PostNewVideo']);
+    Route::post('/edit/{id}', ['as' => 'update-video-page', 'uses' => 'VideoController@postEditVideo']);
     Route::post('/delete/videos', ['as' => 'delete-videos-page', 'uses' => 'VideoController@DeleteVideos']);
   });
 
   Route::group(['prefix' => 'schedules'], function () {
-    Route::get('/', ['as' => 'schdules-page', 'uses' => 'SchedulesController@index']);
+    Route::get('/', ['as' => 'schedules-page', 'uses' => 'ScheduleController@index']);
+    Route::get('/new-schedule', ['as' => 'new-schedule-page', 'uses' => 'ScheduleController@getNewSchedule']);
+    Route::get('/edit/{id}', ['as' => 'edit-schedule-page', 'uses' => 'ScheduleController@getEditSchedule']);
+    Route::get('/delete/{id}', ['as' => 'delete-schedule-page', 'uses' => 'ScheduleController@getDeleteSchedule']);
+
+    Route::match(["post", "get"], '/search-schedules', ['as' => 'search-schedules-page', 'uses' => 'ScheduleController@SearchSchedules']);
+
+    Route::post('/new-schedule', ['as' => 'new-schedule-page', 'uses' => 'ScheduleController@PostNewSchedule']);
+    Route::post('/edit/{id}', ['as' => 'post-edit-schedule-page', 'uses' => 'ScheduleController@postEditSchedule']);
   });
 
   Route::group(['prefix' => 'stores'], function () {
@@ -54,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::match(["post", "get"], '/search', ['as' => 'search-store-page', 'uses' => 'StoreController@SearchStores']);
 
     Route::post('/new-store', ['as' => 'post-new-store-page', 'uses' => 'StoreController@postNewStore']);
+    Route::post('/import', ['as' => 'store-import-page', 'uses' => 'StoreController@postImport']);
     Route::post('/edit/{id}', ['as' => 'update-store-page', 'uses' => 'StoreController@postEditStore']);
     Route::post('/delete/stores', ['as' => 'delete-stores-page', 'uses' => 'StoreController@DeleteStores']);
   });
@@ -94,5 +111,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/new-country', ['as' => 'post-new-country-page', 'uses' => 'CountryController@postNewCountry']);
     Route::post('/new-user', ['as' => 'post-new-user-page', 'uses' => 'UserController@postNewUser']);
     Route::post('/new-partner', ['as' => 'post-new-partner-page', 'uses' => 'PartnerController@postNewPartner']);
+  });
+
+  Route::group(['prefix' => 'client'], function () {
+    Route::get('/setting', ['as' => 'get-setting-page', 'uses' => 'ClientController@getSetting']);
+
+    Route::post('/setting', ['as' => 'post-setting-page', 'uses' => 'ClientController@postSetting']);
   });
 });

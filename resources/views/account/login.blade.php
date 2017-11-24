@@ -17,11 +17,12 @@
     <div class="col-md-12 col-xs-12 login_control">
       {!! Form::open(['url'=>'/account/login']) !!}
 
-      <div class="alert-danger no-padding" style="margin:10px 0; padding-left:5px; padding-left:5px;">
-        @foreach($errors->all() as $error)
-        <div class="error-list">{!! $error !!}</div>
-        @endforeach
+      @if(Session::has('error'))
+      <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <em> {{ Session::get('error') }}</em>
       </div><!-- end alert-danger -->
+      @endif
 
       <div class="ins_sub control" style="text-align: center">Video Distribution System</div><!-- end ins_sub control -->
 
@@ -40,7 +41,7 @@
       {!! Form::close() !!}
     </div><!-- end col-md-12 -->
 
-    <p class="reset-password"><a href="/account/resetpassword">Forgot Password? Click here</a></p>
+    <!-- <p class="reset-password"><a href="/account/resetpassword">Forgot Password? Click here</a></p> -->
   </div><!-- end row -->
 
 </div><!-- end container -->

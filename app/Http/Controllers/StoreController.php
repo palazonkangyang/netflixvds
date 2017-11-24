@@ -7,6 +7,7 @@ use App\Models\Store;
 use App\Models\Partner;
 use App\Models\Country;
 use App\Models\PartnerCountry;
+use App\Jobs\ImportStores;
 use Auth;
 use DB;
 use Hash;
@@ -182,6 +183,37 @@ class StoreController extends Controller
   public function getImport()
   {
     return view('stores.import');
+  }
+
+  // Post Import
+  public function postImport(Request $request, ImportStores $import)
+  {
+    $input = array_except($request->all(), '_token');
+
+    $cnt = $import->handle();
+
+    if ( $cnt === false )
+    {
+      $request->session()->flash('error', 'Bad input file');
+      return back();
+    }
+
+    if($cnt->arr)
+    {
+      $request->session()->flash('success', 'Cannot Import line no: ' . implode(',', $cnt->arr));
+    }
+
+    elseif($cnt->arr1)
+    {
+      $request->session()->flash('success', 'Not Belong to Country: ' . implode(',', $cnt->arr1));
+    }
+
+    else
+    {
+      $request->session()->flash('success', 'Processed Stores:' . $cnt->all);
+    }
+
+    return redirect(route('stores-page'));
   }
 
   // Delete Stores

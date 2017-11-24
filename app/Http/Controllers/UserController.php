@@ -48,6 +48,16 @@ class UserController extends Controller
       {
         $users[$i]->role_name = "Client";
       }
+
+      if($users[$i]->id == Auth::user()->id)
+      {
+        $users[$i]->login_user = "true";
+      }
+
+      else
+      {
+        $users[$i]->login_user = "false";
+      }
     }
 
     return view('settings.user.index', [
@@ -123,6 +133,16 @@ class UserController extends Controller
       {
         $users[$i]->role_name = "Client";
       }
+
+      if($users[$i]->id == Auth::user()->id)
+      {
+        $users[$i]->login_user = "true";
+      }
+
+      else
+      {
+        $users[$i]->login_user = "false";
+      }
     }
 
     return view('settings.user.search-users', [
@@ -148,7 +168,7 @@ class UserController extends Controller
   }
 
   // Add New User
-  public function postNewUser(Request $request, $id)
+  public function postNewUser(Request $request)
   {
     $input = array_except($request->all(), '_token');
 

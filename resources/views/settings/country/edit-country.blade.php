@@ -48,7 +48,7 @@
                   </div>
 
                   <div class="form-group">
-          		   		<label class="col-md-2">Country Name</label>
+          		   		<label class="col-md-2">Country Name <span class="text-danger">*</span></label>
           		    	<div class="col-md-6">
           		    	  {!! Form::text('country_name', $country->country_name, ['class'=>'form-control country-name', 'id'=>'country-name']) !!}
           		    	</div>
@@ -56,7 +56,8 @@
 
                   <hr />
                   <button type="submit" class="btn btn-default margin-right" id="update">Update</button>
-                  <button type="reset" class="btn btn-default" id="cancel">Cancel</button>
+                  <button type="reset" class="btn btn-default margin-right" id="cancel">Cancel</button>
+                  <a class="btn btn-default" href="{{ URL::previous() }}">Back</a>
 
                   {!!Form::close()!!}
                 </div><!-- end col-md-12 -->

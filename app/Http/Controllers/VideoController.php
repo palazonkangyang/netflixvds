@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\Category;
 use App\Models\Video;
+use Thumbnail;
 use Auth;
 use DB;
 use Hash;
@@ -113,8 +114,6 @@ class VideoController extends Controller
   {
     $input = array_except($request->all(), '_token');
 
-    // dd($input['filename'][0]);
-
     $year_path = 'uploads/' . date('Y');
     $month_path = $year_path . '/' . date('m');
 
@@ -130,25 +129,38 @@ class VideoController extends Controller
       mkdir($month_path, 0777);
     }
 
-    if(isset($input['fileurl']) && count($input['fileurl']))
-    {
-      $old_path = 'uploads/tmp/' . $input['fileurl'][0];
-      $new_path = $month_path . '/' . $input['fileurl'][0];
-      $upload_success = File::move($old_path, $new_path);
+    if($request->hasFile('file')) {
+
+      $file = $request->file('file');
+
+      $filename = $file->getClientOriginalName();
+      $path = $month_path;
+      $upload_success = $file->move($path, $filename);
 
       if ($upload_success) {
 
-        $data = [
-          'date' => Carbon::now(),
-          'code' => $input['code'],
-          'title' => $input['title'],
-          'description' => $input['description'],
-          'duration' => $input['duration'],
-          'image' => $input['fileurl'][0],
-          'category_id' => $input['category_id']
-        ];
+        $thumbnail_path = 'uploads/thumb_images';
+        $video_path = $month_path .'/'. $filename;
+        $thumb_name = strtok($filename, '.');
+        $thumbnail_image = $thumb_name . ".jpg";
 
-        Video::create($data);
+        $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image, 10);
+
+        if($thumbnail_status)
+        {
+          $data = [
+            'date' => Carbon::now(),
+            'code' => $input['code'],
+            'title' => $input['title'],
+            'video_name' => $filename,
+            'thumbnail_name' => $thumbnail_image,
+            'description' => $input['description'],
+            'duration' => $input['duration'],
+            'category_id' => $input['category_id']
+          ];
+
+          Video::create($data);
+        }
       }
     }
 
@@ -166,6 +178,75 @@ class VideoController extends Controller
       'video' => $video,
       'categories' => $categories
     ]);
+  }
+
+  // Update Video
+  public function postEditVideo(Request $request, $id)
+  {
+    $input = array_except($request->all(), '_token');
+
+    if($request->hasFile('file')) {
+
+      $year_path = 'uploads/' . date('Y');
+      $month_path = $year_path . '/' . date('m');
+
+      // Check year folder
+      if(!is_dir($year_path))
+      {
+        mkdir($year_path, 0777);
+      }
+
+      // Check month folder
+      if(!is_dir($month_path))
+      {
+        mkdir($month_path, 0777);
+      }
+
+      $file = $request->file('file');
+
+      $filename = $file->getClientOriginalName();
+      $path = $month_path;
+      $upload_success = $file->move($path, $filename);
+
+      if ($upload_success) {
+
+        $thumbnail_path = 'uploads/thumb_images';
+        $video_path = $month_path .'/'. $filename;
+        $thumb_name = strtok($filename, '.');
+        $thumbnail_image = $thumb_name . ".jpg";
+
+        $thumbnail_status = Thumbnail::getThumbnail($video_path,$thumbnail_path,$thumbnail_image, 10);
+
+        if($thumbnail_status)
+        {
+          $video = Video::find($input['id']);
+          $video->date = Carbon::now();
+          $video->code = $input['code'];
+          $video->title = $input['title'];
+          $video->video_name = $filename;
+          $video->thumbnail_name = $thumbnail_image;
+          $video->description = $input['description'];
+          $video->duration = $input['duration'];
+          $video->category_id = $input['category_id'];
+          $video->save();
+        }
+      }
+    }
+
+    else
+    {
+      $video = Video::find($input['id']);
+      $video->date = Carbon::now();
+      $video->code = $input['code'];
+      $video->title = $input['title'];
+      $video->description = $input['description'];
+      $video->duration = $input['duration'];
+      $video->category_id = $input['category_id'];
+      $video->save();
+    }
+
+    Session::flash('success', 'Video is successfully updated!');
+    return redirect()->route('videos-page');
   }
 
   // Delete Videos

@@ -49,7 +49,7 @@ class CountryController extends Controller
   {
     $input = array_except($request->all(), '_token');
 
-    if(empty($input))
+    if(!isset($input['country_name']))
     {
       $input['country_name'] = "";
     }

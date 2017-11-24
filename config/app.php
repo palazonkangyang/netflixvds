@@ -162,7 +162,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        Lakshmaji\Thumbnail\ThumbnailServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -229,6 +231,8 @@ return [
         'Input' => Illuminate\Support\Facades\Input::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Thumbnail' => Lakshmaji\Thumbnail\Facade\Thumbnail::class,
     ],
 
 ];

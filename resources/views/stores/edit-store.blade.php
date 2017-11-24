@@ -45,7 +45,7 @@
 
                   <div class="form-group">
                     {!! Form::hidden('id', $store->id, ['class'=>'form-control', 'id'=>'id']) !!}
-                  </div>
+                  </div><!-- end form-group -->
 
                   <div class="form-group">
           		   		<label class="col-md-2">Partner <span class="text-danger">*</span></label>
@@ -101,7 +101,8 @@
 
                   <hr />
                   <button type="submit" class="btn btn-default margin-right" id="submit">Update</button>
-                  <button type="reset" class="btn btn-default" id="cancel">Cancel</button>
+                  <button type="reset" class="btn btn-default margin-right" id="cancel">Cancel</button>
+                  <a class="btn btn-default" href="{{ URL::previous() }}">Back</a>
 
                   {!!Form::close()!!}
                 </div><!-- end col-md-12 -->

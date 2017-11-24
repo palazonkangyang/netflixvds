@@ -41,7 +41,11 @@
 
               <div class="row form-area-with-inputs">
                 <div class="col-md-12">
-                  {!!Form::open(['class'=>'dropzone', 'id'=>'myAwesomeDropzone', 'enctype'=>'multipart/form-data'])!!}
+                  {!!Form::open(['enctype'=>'multipart/form-data'])!!}
+
+                  <div class="form-group">
+                    {!! Form::hidden('id', $video->id, ['class'=>'form-control', 'id'=>'id']) !!}
+                  </div><!-- end form-group -->
 
                   <div class="form-group">
                     <label class="col-md-2">Code <span class="text-danger">*</span></label>
@@ -86,19 +90,10 @@
 
                   <div class="form-group">
                     <label class="col-md-2">Upload <span class="text-danger">*</span></label>
-                    <div class="col-md-6 wrap-zone" style="padding: 0;">
-                      <div class="col-md-12 dropzone dz-clickable" id="fileUpload">
-                        <div class="dz-message" data-dz-message>
-                          <span>Click to Select Video File <br/>or Drag & Drop a File Here</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="clear-left">
-                      <div class="file-list"></div>
+                    <div class="col-md-6">
+                      {!! Form::file('file', ['class'=>'video', 'id'=>'file']) !!}
                     </div>
                   </div><!-- end form-group -->
-
-                  <div class="clearfix"></div><!-- end clearfix -->
 
                   <hr />
                   <button type="submit" class="btn btn-default margin-right" id="submit">Submit</button>
@@ -124,113 +119,9 @@
 
 @stop
 
-@section('custom-css')
-  <link rel="stylesheet" href="{{ asset('/packages/dropzone/dist/min/basic.min.css') }}"/>
-@stop
-
 @section('custom-js')
 
-  <script type="text/javascript" src="{{ asset('/packages/dropzone/dist/dropzone.js') }}"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
   <script type="text/javascript">
-
-    Dropzone.autoDiscover = false;
-
-    var baseUrl = "{{ url('/') }}";
-    var AppFile = new Dropzone("div#fileUpload", {
-      url: baseUrl + "/file/uploadFiles",
-      params: {
-        _token: "GDjp5GnskNDQkIyQqDXR6dmkIPlbp8bwYdYLZmxK"
-      }
-    });
-
-    Dropzone.options.myAwesomeDropzone = {
-      maxFiles: 1,
-      init: function() {
-        this.on("maxfilesexceeded", function(file){
-          this.removeAllFiles();
-          this.addFile(file);
-        });
-      }
-    };
-
-    Dropzone.options.AppFile = {
-      paramName: "file", // The name that will be used to transfer the file
-      addRemoveLinks: true,
-    };
-
-    AppFile.on("error", function (file, done) {
-      console.log(file);
-    });
-
-    AppFile.on("addedfile", function (file, done) {
-      var removeButton = Dropzone.createElement('<div class="remove-x"><button>Remove</button></div>');
-      var _this = this;
-      var name = file.name;
-
-      if (this.files.length) {
-        var _i, _len;
-        for (_i = 0, _len = this.files.length; _i < _len - 1; _i++) // -1 to exclude current file
-        {
-          if (this.files[_i].name === file.name && this.files[_i].size === file.size && this.files[_i].lastModifiedDate.toString() === file.lastModifiedDate.toString()) {
-            this.removeFile(file);
-          }
-        }
-      }
-
-      removeButton.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        _this.removeFile(file);
-
-        filrem = $('.file-list input[data-file-name="' + name + '"]').val();
-        filinput = $('.file-list input[data-file-name="' + name + '"]').parent().remove();
-
-        $.ajax({
-          type: 'GET',
-          url: '/file/removeFiles/' + filrem,
-          dataType: 'html',
-          success: function (data) {
-            console.log(data);
-          },
-        });
-
-      });
-
-      file.previewElement.appendChild(removeButton);
-    });
-
-    AppFile.on("success", function (file, responseText) {
-      var _ref;
-
-      if (responseText.errors) {
-        var errormsg = responseText.errors.file;
-
-        this.removeFile(this.files);
-        $('.err-file > span').remove();
-        $('.err-file').append('<span class="alert alert-danger">' + errormsg + '<span>');
-        setTimeout(function () {
-          $('.err-file > span').remove();
-        }, 6000);
-
-        return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-      }
-
-      if (responseText.status) {
-        $('.file-list').append('<div class="filesperline"><input data-file-name="' + responseText.file_name + '" type="hidden" name="fileurl[]" value="' + responseText.file_url + '" /> <input data-file-name="' + responseText.file_name + '" type="hidden" name="filename[]" value="' + responseText.file_name + '" /> <input data-file-name="' + responseText.file_name + '" type="hidden" name="mimetype[]" value="' + responseText.mimetype + '" /></div>');
-      }
-      else {
-
-        this.removeFile(this.files);
-        $('.err-file > span').remove();
-        $('.err-file').append('<span class="alert alert-danger">Error. Size is too big to upload! Limit size: 3MB<span>');
-        setTimeout(function () {
-          $('.err-file > span').remove();
-        }, 6000);
-        return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-      }
-    });
 
     $(function() {
 

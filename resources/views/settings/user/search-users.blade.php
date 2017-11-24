@@ -115,7 +115,13 @@
           <tbody>
             @foreach($users as $data)
             <tr>
-              <td class="text-center"><input type="checkbox" name="id[]" value="{{ $data->id }}"></td>
+              <td class="text-center">
+                @if($data->login_user =="false")
+                <input type="checkbox" name="id[]" value="{{ $data->id }}">
+                @else
+                <input type="checkbox" name="id[]" disabled>
+                @endif
+              </td>
               <td>{{ $data->username }}</td>
               <td>{{ $data->full_name }}</td>
               <td>{{ $data->email }}</td>
@@ -125,8 +131,12 @@
               <td>{{ $data->store_name }}</td>
               <td>{{ $data->client_key }}</td>
               <td>
-                <a href="/settings/edit/user/{{$data->id}}" class="action">Edit</a> |
-                <a href="/settings/delete/user/{{$data->id}}" class="action">Remove</a>
+                <a href="/settings/edit/user/{{$data->id}}" class="action">Edit</a>
+                @if($data->login_user =="false")
+                | <a href="/settings/delete/user/{{$data->id}}" class="action remove-item">Remove</a>
+                @else
+                | <span href="#" class="disabled-link" title="You cannot delete the login user.">Remove</span>
+                @endif
               </td>
             </tr>
             @endforeach
@@ -185,7 +195,7 @@
   $(function() {
 
     $("#checkAll").click(function () {
-			$('#user-lists input:checkbox').not(this).prop('checked', this.checked);
+			$('#user-lists input:checkbox').not(":disabled").not(this).prop('checked', this.checked);
 		});
 
     $('#partner-id').change(function() {
@@ -289,6 +299,12 @@
 				$(".alert-danger").removeClass("bg-danger alert alert-error");
 				$(".alert-danger").empty();
 			}
+    });
+
+    $("#user-lists").on('click', '.remove-item', function() {
+      if (!confirm("Are you sure?")){
+        return false;
+      }
     });
 
   });

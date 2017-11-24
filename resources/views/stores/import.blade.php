@@ -41,21 +41,19 @@
 
               <div class="row form-area-with-inputs">
   	            <div class="col-md-12">
-                  {!!Form::open(['class'=>'submit_now'])!!}
+                  {!!Form::open(['class'=>'submit_now', 'enctype' => 'multipart/form-data'])!!}
 
                   <div class="form-group">
-          		    	<div class="col-md-5 no-padding-left">
-          		    	  {!! Form::text('import',NULL,['class'=>'form-control partner-name', 'id'=>'partner']) !!}
+          		    	<div class="col-md-5 no-padding-left" style="margin-top:20px;">
+          		    	  {!! Form::file('file', NULL, ['class'=>'form-control import', 'id'=>'import']) !!}
           		    	</div>
-
-                    <div class="col-md-1">
-                      <a href="#" class="btn btn-default">Browse</a>
-                    </div><!-- end col-md-1 -->
-
-                    <div class="col-md-1">
-                      <button type="button" class="btn btn-default">Import</button>
-                    </div><!-- end col-md-1 -->
           		  	</div><!-- end form-group -->
+
+                  <div class="form-group">
+                    <div class="col-md-1 no-padding-left" style="margin-top:20px;">
+                      <button type="submit" class="btn btn-default">Import</button>
+                    </div><!-- end col-md-1 -->
+                  </div><!-- end form-group -->
 
                   {!! Form::close() !!}
 

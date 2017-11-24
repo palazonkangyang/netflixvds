@@ -17,6 +17,6 @@ class RoleController extends Controller
 {
   public function getRoles()
   {
-    return view('settings.role.roles');
+    return view('settings.role.index');
   }
 }
