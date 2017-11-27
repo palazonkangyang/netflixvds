@@ -66,12 +66,24 @@
           <div class="col-md-2 no-padding-left">
             <select class="form-control" name="country_id" id="country-id">
               <option value="0">Country</option>
+
+              @if(count($countries) > 0)
+                @foreach($countries as $data)
+                <option value="{{ $data->id }}" <?php if ($data->id == $country_id) echo "selected"; ?>>{{ $data->country_name }}</option>
+                @endforeach
+              @endif
             </select>
           </div><!-- end col-md-2 -->
 
           <div class="col-md-2 no-padding-left">
             <select class="form-control" name="store_id" id="store-id">
               <option value="0">Stores</option>
+
+              @if(count($stores) > 0)
+                @foreach($stores as $data)
+                <option value="{{ $data->id }}" <?php if ($data->id == $store_id) echo "selected"; ?>>{{ $data->store_name }}</option>
+                @endforeach
+              @endif
             </select>
           </div><!-- end col-md-2 -->
 

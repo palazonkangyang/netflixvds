@@ -12,6 +12,7 @@ use App\Models\Schedule;
 use App\Models\ScheduleDate;
 use App\Models\ScheduleStore;
 use App\Models\ScheduleVideo;
+use App\Models\PartnerCountry;
 use App\Models\Video;
 use Auth;
 use DB;
@@ -134,7 +135,10 @@ class ScheduleController extends Controller
     $category_id = "";
     $search_title = "";
 
-    $q = Video::query();
+    $countries = [];
+    $stores = [];
+
+    $q = ScheduleVideo::query();
 
     if(isset($input['from_date']))
     {
@@ -142,18 +146,28 @@ class ScheduleController extends Controller
       $date = str_replace('/', '-', $input['from_date']);
       $FromDate = date("Y-m-d", strtotime($date));
 
-      $q->where('schedule_date.from_date', '<=', $FromDate);
-      $q->where('schedule_date.from_date', '>=', $to_date);
-    }
-
-    if(isset($input['to_date']))
-    {
       $to_date = $input['to_date'];
       $date = str_replace('/', '-', $input['to_date']);
       $ToDate = date("Y-m-d", strtotime($date));
 
-      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
-      $q->orwhere('schedule_date.to_date', '<=', $to_date);
+      // $q->where('schedule_date.from_date', '<=', $FromDate);
+      // $q->whereBetween('schedule_date.from_date', [$FromDate, $ToDate]);
+      // $q->orwhere('schedule_date.from_date', '>=', $to_date);
+    }
+
+    if(isset($input['to_date']))
+    {
+      $from_date = $input['from_date'];
+      $date = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($date));
+
+      $to_date = $input['to_date'];
+      $date = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($date));
+
+      // $q->orwhere('schedule_date.to_date', '>=', $FromDate);
+      // $q->orwhere('schedule_date.to_date', '<=', $to_date);
+      // $q->whereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
     }
 
     if(isset($input['search_title']))
@@ -169,6 +183,11 @@ class ScheduleController extends Controller
       if($input['partner_id'] != 0)
       {
         $q->where('schedule.partner_id', '=', $input['partner_id']);
+
+        $countries = PartnerCountry::leftjoin('country', 'partner_country.country_id', '=', 'country.id')
+                     ->where('partner_country.partner_id', $input['partner_id'])
+                     ->orderBy('country.id', 'asc')
+                     ->get();
       }
     }
 
@@ -179,6 +198,8 @@ class ScheduleController extends Controller
       if($input['country_id'] != 0)
       {
         $q->where('schedule_store.country_id', '=', $input['country_id']);
+
+        $stores = Store::where('country_id', $input['country_id'])->get();
       }
     }
 
@@ -196,13 +217,13 @@ class ScheduleController extends Controller
     {
       $category_id = $input['category_id'];
 
-      if($input['store_id'] != 0)
+      if($input['category_id'] != 0)
       {
         $q->where('video.category_id', '=', $input['category_id']);
       }
     }
 
-    $schedules = $q->leftjoin('schedule_video', 'video.id', '=', 'schedule_video.video_id')
+    $schedules = $q->leftjoin('video', 'video.id', '=', 'schedule_video.video_id')
                  ->leftjoin('schedule_date', 'schedule_date.schedule_id', '=', 'schedule_video.schedule_id')
                  ->leftjoin('schedule_store', 'schedule_store.schedule_id', '=', 'schedule_video.schedule_id')
                  ->leftjoin('category', 'category.id', '=', 'video.category_id')
@@ -239,7 +260,9 @@ class ScheduleController extends Controller
       'country_id' => $country_id,
       'store_id' => $store_id,
       'category_id' => $category_id,
-      'search_title' => $search_title
+      'search_title' => $search_title,
+      'countries' => $countries,
+      'stores' => $stores
     ]);
   }
 

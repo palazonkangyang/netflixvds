@@ -8,6 +8,7 @@ use App\Models\Partner;
 use App\Models\Country;
 use App\Models\Store;
 use App\Models\User;
+use App\Models\ScheduleDate;
 use Auth;
 use DB;
 use Hash;
@@ -26,8 +27,13 @@ class CommonController extends Controller
     $no_of_partners = Partner::count();
     $no_of_stores = Store::count();
 
+    $no_of_schedules = ScheduleDate::leftjoin('schedule_store', 'schedule_store.schedule_id', '=', 'schedule_date.schedule_id')
+                       ->leftjoin('schedule_video', 'schedule_video.schedule_id', '=', 'schedule_date.schedule_id')
+                       ->count();
+
     return view('dashboard' , [
       'no_of_videos' => $no_of_videos,
+      'no_of_schedules' => $no_of_schedules,
       'no_of_partners' => $no_of_partners,
       'no_of_stores' => $no_of_stores
     ]);

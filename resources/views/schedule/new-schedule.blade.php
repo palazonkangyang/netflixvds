@@ -260,7 +260,7 @@
       var validationFailed = false;
 
       var country_name = $("#country-name").val();
-      var country_id = $('#country-id').val();
+      var country_id = $("#country-id").val();
       var store_name = $("#store-name").val();
       var store_id = $("#store-id").val();
       var partner_id = $("#partner-id").val();
@@ -308,6 +308,8 @@
         "<td><input type='hidden' value='" + store_id + "' name='store_id[]'>" + store_name + "</td>" +
         "<td><a href='#' class='remove'>Remove</a></td></tr>");
 
+        $("#store-name").val('');
+
         $(".alert-danger").removeClass("bg-danger alert alert-error");
         $(".alert-danger").empty();
       }
@@ -318,45 +320,79 @@
 
       e.preventDefault();
 
+      var count = 0;
+      var errors = new Array();
+      var validationFailed = false;
+
       var from_date = $("#from-date").val();
       var to_date = $("#to-date").val();
       var date = from_date + ' - ' + to_date;
       var timezone = $("#timezone-id").find("option:selected").text();
       var timezone_id = $("#timezone-id").val();
 
-      if(from_date == "" || timezone_id == 0)
+      if(from_date == '')
       {
-        return false;
+        validationFailed = true;
+        errors[count++] = "From Date is empty.";
       }
 
-      else if(from_date != "" && to_date != "" && timezone_id != 0)
+      if(timezone_id == 0)
       {
-        $('#date-lists td').each(function() {
+        validationFailed = true;
+        errors[count++] = "Timezone field is empty.";
+      }
 
-          if($(this).attr('id') == 'no-data')
-          {
-            $(this).parent().remove();
-          }
-        });
+      if (validationFailed)
+      {
+        var errorMsgs = '';
 
-        $("#date-lists tbody").append("<tr><td><input type='hidden' value='" + date + "' name='date[]'>" + date + "</td>" +
-        "<td><input type='hidden' value='" + timezone_id + "' name='timezone_id[]'>" + timezone + "</td>" +
-        "<td><a href='#' class='remove'>Remove</a></td></tr>");
+        for(var i = 0; i < count; i++)
+        {
+          errorMsgs = errorMsgs + errors[i] + "<br/>";
+        }
+
+        $('html,body').animate({ scrollTop: 0 }, 'slow');
+
+        $(".alert-danger").addClass("bg-danger alert alert-error");
+        $(".alert-danger").html(errorMsgs);
+
+        return false;
       }
 
       else
       {
-        $('#date-lists td').each(function() {
+        if(from_date != "" && to_date != "" && timezone_id != 0)
+        {
+          $('#date-lists td').each(function() {
 
-          if($(this).attr('id') == 'no-data')
-          {
-            $(this).parent().remove();
-          }
-        });
+            if($(this).attr('id') == 'no-data')
+            {
+              $(this).parent().remove();
+            }
+          });
 
-        $("#date-lists tbody").append("<tr><td><input type='hidden' value='" + from_date + "' name='date[]'>" + from_date + "</td>" +
-        "<td><input type='hidden' value='" + timezone_id + "' name='timezone_id[]'>" + timezone + "</td>" +
-        "<td><a href='#' class='remove'>Remove</a></td></tr>");
+          $("#date-lists tbody").append("<tr><td><input type='hidden' value='" + date + "' name='date[]'>" + date + "</td>" +
+          "<td><input type='hidden' value='" + timezone_id + "' name='timezone_id[]'>" + timezone + "</td>" +
+          "<td><a href='#' class='remove'>Remove</a></td></tr>");
+        }
+
+        else
+        {
+          $('#date-lists td').each(function() {
+
+            if($(this).attr('id') == 'no-data')
+            {
+              $(this).parent().remove();
+            }
+          });
+
+          $("#date-lists tbody").append("<tr><td><input type='hidden' value='" + from_date + "' name='date[]'>" + from_date + "</td>" +
+          "<td><input type='hidden' value='" + timezone_id + "' name='timezone_id[]'>" + timezone + "</td>" +
+          "<td><a href='#' class='remove'>Remove</a></td></tr>");
+        }
+
+        $(".alert-danger").removeClass("bg-danger alert alert-error");
+        $(".alert-danger").empty();
       }
 
     });
@@ -385,6 +421,8 @@
       {
         $("#video-lists tbody").append("<tr title='Drag for Sequence'><td><input type='hidden' value='" + video_id + "' name='video_id[]'>" + video_name + "</td>" +
         "<td><a href='#' class='remove'>Remove</a></td></tr>");
+
+        $("#video-name").val('');
       }
 
     });

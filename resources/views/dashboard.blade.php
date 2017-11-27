@@ -23,14 +23,14 @@
       </div><!-- end col-md-3 -->
 
       <div class="col-md-3 col-sm-3 col-xs-6">
-        <a href="#" class="magic-link">
+        <a href="/schedules" class="magic-link">
           <div class="dashboard-div-wrapper bk-clr-two">
             <i class="fa fa-calendar dashboard-div-icon"></i>
             <div class="progress progress-striped active">
               <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
               </div>
             </div>
-            <h5 style="font-weight: bold">Schedules (0)</h5>
+            <h5 style="font-weight: bold">Schedules ({{ $no_of_schedules }})</h5>
           </div><!-- end dashboard-div-wrapper -->
         </a>
       </div><!-- end col-md-3 -->

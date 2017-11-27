@@ -132,8 +132,8 @@
                         <tbody>
                           @foreach($schedule_date as $data)
                           <tr>
-                            <td>{{ $data->date }}</td>
-                            <td>{{ $data->name }}</td>
+                            <td><input type='hidden' value='{{ $data->date }}' name='date[]'>{{ $data->date }}</td>
+                            <td><input type='hidden' value='{{ $data->time_zone_id }}' name='timezone_id[]'>{{ $data->name }}</td>
                             <td><a href='#' class='remove'>Remove</a></td>
                           </tr>
                           @endforeach
