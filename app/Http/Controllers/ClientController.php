@@ -8,6 +8,9 @@ use App\Models\Store;
 use App\Models\User;
 use App\Models\ClientSetting;
 use App\Models\TimeZone;
+use App\Models\Partner;
+use App\Models\Category;
+use App\Models\ScheduleVideo;
 use Auth;
 use DB;
 use Hash;
@@ -81,6 +84,115 @@ class ClientController extends Controller
     Auth::logout();
 
     return redirect()->intended(URL::route('client-login-page'));
+  }
+
+  public function getSchedules()
+  {
+    $partners = Partner::all();
+    $categories = Category::all();
+
+    return view('client.schedules', [
+      'partners' => $partners,
+      'categories' => $categories
+    ]);
+  }
+
+  public function SearchSchedules(Request $request)
+  {
+    $input = array_except($request->all(), '_token');
+
+    $categories = Category::all();
+
+    $from_date = "";
+    $to_date = "";
+    $category_id = "";
+    $search_title = "";
+
+    $q = ScheduleVideo::query();
+
+    if(isset($input['from_date']) && isset($input['to_date']))
+    {
+      $from_date = $input['from_date'];
+      $date = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($date));
+
+      $to_date = $input['to_date'];
+      $date = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($date));
+
+      $q->whereBetween('schedule_date.from_date', [$FromDate, $ToDate]);
+      $q->orwhereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
+    }
+
+    if(isset($input['from_date']))
+    {
+      $from_date = $input['from_date'];
+      $date = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($date));
+
+      $q->where('schedule_date.from_date', '<=', $FromDate);
+      $q->orwhere('schedule_date.from_date', '>=', $to_date);
+    }
+
+    if(isset($input['to_date']))
+    {
+      $to_date = $input['to_date'];
+      $date = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($date));
+
+      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
+      $q->orwhere('schedule_date.to_date', '<=', $to_date);
+    }
+
+    if(isset($input['search_title']))
+    {
+      $q->where('video.title', 'like', '%' . $input['search_title'] . '%');
+      $search_title = $input['search_title'];
+    }
+
+    if(isset($input['category_id']))
+    {
+      $category_id = $input['category_id'];
+
+      if($input['category_id'] != 0)
+      {
+        $q->where('video.category_id', '=', $input['category_id']);
+      }
+    }
+
+    $schedules = $q->leftjoin('video', 'video.id', '=', 'schedule_video.video_id')
+                 ->leftjoin('schedule_date', 'schedule_date.schedule_id', '=', 'schedule_video.schedule_id')
+                 ->leftjoin('schedule_store', 'schedule_store.schedule_id', '=', 'schedule_video.schedule_id')
+                 ->leftjoin('category', 'category.id', '=', 'video.category_id')
+                 ->leftjoin('schedule', 'schedule.id', '=', 'schedule_video.schedule_id')
+                 ->select('schedule_video.schedule_id', 'schedule_date.from_date', 'schedule_date.to_date',
+                  'schedule_video.sequence', 'video.title', 'video.thumbnail_name', 'video.duration', 'category.category_name')
+                  ->where('schedule_store.store_id', Auth::user()->store_id)
+                 ->paginate(10);
+
+    foreach($schedules as $data)
+    {
+      if(isset($data->from_date))
+      {
+        $data->from_date = Carbon::parse($data->from_date)->format("d/m/Y");
+        $data->date = $data->from_date;
+      }
+
+      if(isset($data->to_date))
+      {
+        $data->to_date = Carbon::parse($data->to_date)->format("d/m/Y");
+        $data->date = $data->from_date . ' - ' . $data->to_date;
+      }
+    }
+
+    return view('client.search-schedules', [
+      'from_date' => $from_date,
+      'to_date' => $to_date,
+      'schedules' => $schedules,
+      'categories' => $categories,
+      'category_id' => $category_id,
+      'search_title' => $search_title
+    ]);
   }
 
   public function getSetting()
