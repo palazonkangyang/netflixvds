@@ -124,25 +124,28 @@ class ClientController extends Controller
       $q->orwhereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
     }
 
-    if(isset($input['from_date']))
+    else if(isset($input['from_date']))
     {
       $from_date = $input['from_date'];
       $date = str_replace('/', '-', $input['from_date']);
       $FromDate = date("Y-m-d", strtotime($date));
 
       $q->where('schedule_date.from_date', '<=', $FromDate);
-      $q->orwhere('schedule_date.from_date', '>=', $to_date);
+      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
     }
 
-    if(isset($input['to_date']))
+    else if(isset($input['to_date']))
     {
       $to_date = $input['to_date'];
       $date = str_replace('/', '-', $input['to_date']);
       $ToDate = date("Y-m-d", strtotime($date));
 
-      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
-      $q->orwhere('schedule_date.to_date', '<=', $to_date);
+      $q->orwhere('schedule_date.from_date', '<=', $ToDate);
+      $q->where('schedule_date.to_date', '>=', $ToDate);
     }
+
+    else
+    {}
 
     if(isset($input['search_title']))
     {

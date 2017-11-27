@@ -73,7 +73,7 @@
 
           {!! Form::close() !!}
 
-          <div class="col-md-1 no-padding-right">
+          <div class="col-md-1 no-padding-right pull-right">
             <a href="/videos/new-video" class="btn btn-default pull-right">Upload New</a>
           </div><!-- end col-md-1 -->
 
