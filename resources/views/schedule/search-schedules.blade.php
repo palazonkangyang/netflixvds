@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Search Stores')
+@section('title', 'Search Schedules')
 @section('content')
 
 <div class="content-wrapper">
@@ -8,7 +8,7 @@
     <div class="row">
 
       <div class="col-md-12">
-        <h4 class="page-head-line">Stores</h4>
+        <h4 class="page-head-line">Schedules</h4>
       </div><!-- end col-md-12 -->
 
     </div><!-- end row -->
