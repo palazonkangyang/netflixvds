@@ -33,7 +33,7 @@
     @if(Auth::user()->role == 2)
     <div class="navbar-collapse collapse no-padding-right">
       <ul id="menu-top" class="nav navbar-nav navbar-right">
-        <li><a class="#" href="#"><i class="fa fa-calendar"></i> Schedules</a></li>
+        <li><a class="#" href="/client/schedules"><i class="fa fa-calendar"></i> Schedules</a></li>
         <li><a class="#" href="/client/setting"><i class="fa fa-cogs"></i> Settings</a></li>
       </ul>
     </div><!-- end navbar-collapse -->

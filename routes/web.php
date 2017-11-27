@@ -114,7 +114,10 @@ Route::group(['middleware' => 'auth'], function () {
   });
 
   Route::group(['prefix' => 'client'], function () {
+    Route::get('/schedules', ['as' => 'client-schedules-page', 'uses' => 'ClientController@getSchedules']);
     Route::get('/setting', ['as' => 'get-setting-page', 'uses' => 'ClientController@getSetting']);
+
+    Route::match(["post", "get"], '/schedules/search-schedules', ['as' => 'client-search-schedules-page', 'uses' => 'ClientController@SearchSchedules']);
 
     Route::post('/setting', ['as' => 'post-setting-page', 'uses' => 'ClientController@postSetting']);
   });
