@@ -140,34 +140,38 @@ class ScheduleController extends Controller
 
     $q = ScheduleVideo::query();
 
+    if(isset($input['from_date']) && isset($input['to_date']))
+    {
+      $from_date = $input['from_date'];
+      $date = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($date));
+
+      $to_date = $input['to_date'];
+      $date = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($date));
+
+      $q->whereBetween('schedule_date.from_date', [$FromDate, $ToDate]);
+      $q->orwhereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
+    }
+
     if(isset($input['from_date']))
     {
       $from_date = $input['from_date'];
       $date = str_replace('/', '-', $input['from_date']);
       $FromDate = date("Y-m-d", strtotime($date));
 
-      $to_date = $input['to_date'];
-      $date = str_replace('/', '-', $input['to_date']);
-      $ToDate = date("Y-m-d", strtotime($date));
-
-      // $q->where('schedule_date.from_date', '<=', $FromDate);
-      // $q->whereBetween('schedule_date.from_date', [$FromDate, $ToDate]);
-      // $q->orwhere('schedule_date.from_date', '>=', $to_date);
+      $q->where('schedule_date.from_date', '<=', $FromDate);
+      $q->orwhere('schedule_date.from_date', '>=', $to_date);
     }
 
     if(isset($input['to_date']))
     {
-      $from_date = $input['from_date'];
-      $date = str_replace('/', '-', $input['from_date']);
-      $FromDate = date("Y-m-d", strtotime($date));
-
       $to_date = $input['to_date'];
       $date = str_replace('/', '-', $input['to_date']);
       $ToDate = date("Y-m-d", strtotime($date));
 
-      // $q->orwhere('schedule_date.to_date', '>=', $FromDate);
-      // $q->orwhere('schedule_date.to_date', '<=', $to_date);
-      // $q->whereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
+      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
+      $q->orwhere('schedule_date.to_date', '<=', $to_date);
     }
 
     if(isset($input['search_title']))
