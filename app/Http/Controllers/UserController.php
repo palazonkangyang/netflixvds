@@ -29,7 +29,7 @@ class UserController extends Controller
              ->leftjoin('country', 'users.country_id', '=', 'country.id')
              ->leftjoin('store', 'users.store_id', '=', 'store.id')
              ->select('users.*', 'partner.partner_name', 'country.country_name', 'store.store_name')
-             ->orderBy('id', 'asc')
+             ->orderBy('users.username', 'asc')
              ->paginate(10);
 
     for($i = 0; $i < count($users); $i++)

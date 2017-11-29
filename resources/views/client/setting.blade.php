@@ -121,11 +121,11 @@
 
   $(function() {
 
-    var auto_update = '<?php echo $client_setting->auto_update; ?>';
+    var auto_update = "<?= isset($client_setting->auto_update) ? $client_setting->auto_update : date('H:i')  ?>";
 
     var options = {
-        now: auto_update, //hh:mm 24 hour format only, defaults to current time
-        twentyFour: true,  //Display 24 hour format, defaults to false
+      now: auto_update, //hh:mm 24 hour format only, defaults to current time
+      twentyFour: true,  //Display 24 hour format, defaults to false
     };
 
     $('.auto-update').wickedpicker(options);

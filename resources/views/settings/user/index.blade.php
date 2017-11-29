@@ -123,7 +123,7 @@
                 @if($data->login_user =="false")
                 | <a href="/settings/delete/user/{{$data->id}}" class="action remove-item">Remove</a>
                 @else
-                | <span href="#" class="disabled-link" title="You cannot delete the login user.">Remove</span>
+                | <span href="#" class="disabled-link" title="You cannot remove the login user.">Remove</span>
                 @endif
               </td>
             </tr>

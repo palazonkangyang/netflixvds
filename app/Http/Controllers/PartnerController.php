@@ -23,7 +23,7 @@ class PartnerController extends Controller
   // Get Partners
   public function getPartners()
   {
-    $partners = Partner::orderBy('id', 'asc')->paginate(10);
+    $partners = Partner::orderBy('partner_name', 'asc')->paginate(10);
 
     for($i = 0; $i < count($partners); $i++)
     {
@@ -59,7 +59,7 @@ class PartnerController extends Controller
     }
 
     $partners = Partner::where('partner_name', 'like', '%'. $partner_name .'%')
-                ->orderBy('id', 'asc')
+                ->orderBy('partner_name', 'asc')
                 ->paginate(10);
 
     for($i = 0; $i < count($partners); $i++)

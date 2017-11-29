@@ -26,6 +26,7 @@ class VideoController extends Controller
 
     $videos = Video::leftjoin('category', 'video.category_id', '=', 'category.id')
               ->select('video.*', 'category.category_name')
+              ->orderBy('video.date', 'desc')
               ->paginate(10);
 
     foreach($videos as $data)
@@ -51,16 +52,30 @@ class VideoController extends Controller
 
     $q = Video::query();
 
-    if(isset($input['from_date']))
+    if(isset($input['from_date']) && isset($input['to_date']))
     {
       $from_date = $input['from_date'];
       $date = str_replace('/', '-', $input['from_date']);
       $FromDate = date("Y-m-d", strtotime($date));
 
-      $q->where('video.date', '>=', $FromDate);
+      $to_date = $input['to_date'];
+      $date = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($date));
+
+      $q->where('video.date', '<=', $FromDate);
+      $q->where('video.date', '<=', $ToDate);
     }
 
-    if(isset($input['to_date']))
+    else if(isset($input['from_date']))
+    {
+      $from_date = $input['from_date'];
+      $date = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($date));
+
+      $q->where('video.date', '<=', $FromDate);
+    }
+
+    else if(isset($input['to_date']))
     {
       $to_date = $input['to_date'];
       $date = str_replace('/', '-', $input['to_date']);
@@ -68,6 +83,8 @@ class VideoController extends Controller
 
       $q->where('video.date', '<=', $ToDate);
     }
+
+    else{}
 
     if($input['category_id'] != 0)
     {
@@ -81,7 +98,7 @@ class VideoController extends Controller
 
     $videos = $q->leftjoin('category', 'video.category_id', '=', 'category.id')
               ->select('video.*', 'category.category_name')
-              ->orderBy('id', 'asc')
+              ->orderBy('video.date', 'desc')
               ->paginate(10);
 
     foreach($videos as $data)

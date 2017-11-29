@@ -28,7 +28,8 @@ class StoreController extends Controller
     $stores = Store::leftjoin('country', 'store.country_id', '=', 'country.id')
               ->leftjoin('partner', 'store.partner_id', '=', 'partner.id')
               ->select('store.*', 'country.country_name', 'partner.partner_name')
-              ->orderBy('store.id', 'asc')
+              ->orderBy('partner.partner_name', 'asc')
+              ->orderBy('store.store_name', 'asc')
               ->paginate(10);
 
     return view('stores.index', [
@@ -86,7 +87,8 @@ class StoreController extends Controller
     $stores = $q->leftjoin('country', 'store.country_id', 'country.id')
               ->leftjoin('partner', 'store.partner_id', 'partner.id')
               ->select('store.*', 'country.country_name', 'partner.partner_name')
-              ->orderBy('store.id', 'asc')
+              ->orderBy('partner.partner_name', 'asc')
+              ->orderBy('store.store_name', 'asc')
               ->paginate(10);
 
     return view('stores.search-stores', [

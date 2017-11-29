@@ -16,6 +16,14 @@
 	    }
    });
 
+   $(".user-top-right").hover(function(){
+     $(this).addClass("open");
+   });
+
+   $(".user-name").hover(function(){
+     $(".user-top-right").addClass("open");
+   });
+
   });
 
 </script>

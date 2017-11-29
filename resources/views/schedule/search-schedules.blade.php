@@ -42,7 +42,7 @@
         <div class="col-md-12 form-size no-padding-left no-padding-right" style="margin-bottom:20px;">
 
           <div class="col-md-2 no-padding-left">
-            <input type="text" name="from_date" placeholder="From Date" class="form-control" id="from-date" value="{{ $from_date }}">
+            <input type="text" name="from_date" placeholder="From Date" class="form-control" id="from-date" value="{{ old('from_date') }}">
           </div><!-- end col-md-2 -->
 
           <div class="col-md-1 no-padding-left no-padding-right" style="width:30px; vertical-align: middle;">
@@ -50,7 +50,7 @@
           </div><!-- end col-md-1 -->
 
           <div class="col-md-2 no-padding-left">
-            <input type="text" name="to_date" placeholder="To Date" class="form-control" id="to-date" value="{{ $to_date }}">
+            <input type="text" name="to_date" placeholder="To Date" class="form-control" id="to-date" value="{{ old('to_date') }}">
           </div><!-- end col-md-2 -->
 
           <div class="col-md-2 no-padding-left">

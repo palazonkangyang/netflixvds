@@ -55,7 +55,7 @@
       <div class="col-md-12">
         @if(Auth::user()->role != 2)
         <strong>Welcome, </strong>
-        <span style="color: #f4f4f4; font-weight: bold;">{{ Auth::user()->username }}</span>
+        <span style="color: #f4f4f4; font-weight: bold;" class="user-name">{{ Auth::user()->full_name }}</span>
         @else
         <strong>{{ $country_name }} : {{ $store_name }}</strong>
         @endif
