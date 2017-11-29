@@ -183,7 +183,6 @@ class UserController extends Controller
       if($key)
       {
         do {
-
           $input['client_key'] = str_random(16);
 
         } while ($input['client_key'] == $key->client_key);

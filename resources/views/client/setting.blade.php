@@ -121,7 +121,7 @@
 
   $(function() {
 
-    var auto_update = "<?= isset($client_setting->auto_update) ? $client_setting->auto_update : date('H:i')  ?>";
+    var auto_update = "<?= isset($client_setting->auto_update) ? $client_setting->auto_update : '00 : 00'  ?>";
 
     var options = {
       now: auto_update, //hh:mm 24 hour format only, defaults to current time
