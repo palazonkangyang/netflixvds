@@ -105,8 +105,6 @@
 
       </div><!-- end row -->
 
-      {!! Form::open(array("url"=>"/videos/delete/videos")) !!}
-
       <div class="row">
 
         <table class="col-md-12 table-bordered table-striped table-condensed" id="video-lists">
@@ -152,8 +150,6 @@
           </div>
         </div><!-- end col-md-4 -->
       </div><!-- end row -->
-
-      {!! Form::close() !!}
 
     </div><!-- end wrap-content -->
 
