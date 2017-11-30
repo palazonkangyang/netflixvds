@@ -156,7 +156,7 @@
 
           <tbody>
             <tr>
-              <td colspan="9">No Data</td>
+              <td colspan="7">No Data</td>
             </tr>
           </tbody>
 

@@ -57,7 +57,7 @@
         <strong>Welcome, </strong>
         <span style="color: #f4f4f4; font-weight: bold;" class="user-name">{{ Auth::user()->full_name }}</span>
         @else
-        <strong class="user-name">{{ $country_name }} : {{ $store_name }}</strong>
+        <strong>{{ $country_name }} : {{ $store_name }}</strong>
         @endif
         <div class="user-top-right btn-group">
           <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

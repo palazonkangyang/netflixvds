@@ -156,68 +156,57 @@ class ScheduleController extends Controller
       $q->orwhereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
     }
 
-    else if(isset($input['from_date']))
-    {
-      $from_date = $input['from_date'];
-      $date = str_replace('/', '-', $input['from_date']);
-      $FromDate = date("Y-m-d", strtotime($date));
-
-      $q->where('schedule_date.from_date', '<=', $FromDate);
-      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
-    }
-
-    else if(isset($input['to_date']))
-    {
-      $to_date = $input['to_date'];
-      $date = str_replace('/', '-', $input['to_date']);
-      $ToDate = date("Y-m-d", strtotime($date));
-
-      $q->orwhere('schedule_date.from_date', '<=', $ToDate);
-      $q->where('schedule_date.to_date', '>=', $ToDate);
-    }
-
-    else
-    {}
-
     if(isset($input['search_title']))
     {
       $q->where('video.title', 'like', '%' . $input['search_title'] . '%');
       $search_title = $input['search_title'];
     }
 
-    if($input['partner_id'] != 0)
+    if(isset($input['partner_id']))
     {
       $partner_id = $input['partner_id'];
 
-      $q->where('schedule.partner_id', '=', $input['partner_id']);
+      if($input['partner_id'] != 0)
+      {
+        $q->where('schedule.partner_id', '=', $input['partner_id']);
 
-      $countries = PartnerCountry::leftjoin('country', 'partner_country.country_id', '=', 'country.id')
-                   ->where('partner_country.partner_id', $input['partner_id'])
-                   ->orderBy('country.id', 'asc')
-                   ->get();
+        $countries = PartnerCountry::leftjoin('country', 'partner_country.country_id', '=', 'country.id')
+                     ->where('partner_country.partner_id', $input['partner_id'])
+                     ->orderBy('country.id', 'asc')
+                     ->get();
+      }
     }
 
-    if($input['country_id'] != 0)
+    if(isset($input['country_id']))
     {
       $country_id = $input['country_id'];
 
-      $q->where('schedule_store.country_id', '=', $input['country_id']);
+      if($input['country_id'] != 0)
+      {
+        $q->where('schedule_store.country_id', '=', $input['country_id']);
 
-      $stores = Store::where('country_id', $input['country_id'])->get();
+        $stores = Store::where('country_id', $input['country_id'])->get();
+      }
     }
 
-    if($input['store_id'] != 0)
+    if(isset($input['store_id']))
     {
       $store_id = $input['store_id'];
 
-      $q->where('schedule_store.store_id', '=', $input['store_id']);
+      if($input['store_id'] != 0)
+      {
+        $q->where('schedule_store.store_id', '=', $input['store_id']);
+      }
     }
 
-    if($input['category_id'] != 0)
+    if(isset($input['category_id']))
     {
       $category_id = $input['category_id'];
 
-      $q->where('video.category_id', '=', $input['category_id']);
+      if($input['category_id'] != 0)
+      {
+        $q->where('video.category_id', '=', $input['category_id']);
+      }
     }
 
     $schedules = $q->leftjoin('video', 'video.id', '=', 'schedule_video.video_id')
