@@ -133,6 +133,7 @@ class VideoController extends Controller
 
     $year_path = 'uploads/' . date('Y');
     $month_path = $year_path . '/' . date('m');
+    $full_path = '/' . $month_path . '/';
 
     // Check year folder
     if(!is_dir($year_path))
@@ -171,6 +172,7 @@ class VideoController extends Controller
             'title' => $input['title'],
             'video_name' => $filename,
             'thumbnail_name' => $thumbnail_image,
+            'video_path' => $full_path,
             'description' => $input['description'],
             'duration' => $input['duration'],
             'category_id' => $input['category_id']

@@ -12,6 +12,7 @@ class Video extends Model
     'title',
     'video_name',
     'thumbnail_name',
+    'video_path',
     'description',
     'duration',
     'category_id'
