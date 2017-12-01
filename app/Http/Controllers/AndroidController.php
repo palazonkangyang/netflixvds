@@ -27,12 +27,12 @@ class AndroidController extends Controller
     $videos = ScheduleStore::leftjoin('schedule_video', 'schedule_store.schedule_id', '=', 'schedule_video.schedule_id')
               ->leftjoin('video', 'schedule_video.video_id', '=', 'video.id')
               ->where('store_id', $store_id)
-              ->select('video_name')
+              ->select('video_name', 'video_path')
               ->get();
 
     foreach($videos as $data)
     {
-      $data->full_path = $path . '/' . $data->video_name;
+      $data->full_path = URL::to('/') . $data->video_path . $data->video_name;
     }
 
     return response()->json([
