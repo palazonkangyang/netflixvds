@@ -24,9 +24,15 @@ class AndroidController extends Controller
     $month_path = $year_path . '/' . date('m');
     $path = URL::to('/') . '/' . $month_path;
 
+    $date = Carbon::now();
+    $today = $date->toDateString();
+
     $videos = ScheduleStore::leftjoin('schedule_video', 'schedule_store.schedule_id', '=', 'schedule_video.schedule_id')
               ->leftjoin('video', 'schedule_video.video_id', '=', 'video.id')
+              ->leftjoin('schedule_date', 'schedule_store.schedule_id', '=', 'schedule_date.schedule_id')
               ->where('store_id', $store_id)
+              ->where('schedule_date.from_date', '<=', $today)
+              ->where('schedule_date.to_date', '>=', $today)
               ->select('video_name', 'video_path')
               ->get();
 
