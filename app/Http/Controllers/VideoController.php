@@ -245,7 +245,7 @@ class VideoController extends Controller
           $video->title = $input['title'];
           $video->video_name = $filename;
           $video->thumbnail_name = $thumbnail_image;
-          $video->video_path = $full_path,
+          $video->video_path = $full_path;
           $video->description = $input['description'];
           $video->duration = $input['duration'];
           $video->category_id = $input['category_id'];
