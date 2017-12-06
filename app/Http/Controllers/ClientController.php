@@ -217,6 +217,8 @@ class ClientController extends Controller
 
     $client_setting = ClientSetting::where('user_id', $input['id'])->first();
 
+    $input['auto_update'] = str_replace(' ', '', $input['auto_update']);
+
     if(!isset($client_setting))
     {
       ClientSetting::create($input);

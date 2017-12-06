@@ -129,8 +129,8 @@ class ScheduleController extends Controller
     $partners = Partner::all();
     $categories = Category::all();
 
-    $from_date = "";
-    $to_date = "";
+    $from_date = $input['from_date'];
+    $to_date = $input['to_date'];
     $partner_id = "";
     $country_id = "";
     $store_id = "";
@@ -152,8 +152,8 @@ class ScheduleController extends Controller
       $date = str_replace('/', '-', $input['to_date']);
       $ToDate = date("Y-m-d", strtotime($date));
 
-      $q->whereBetween('schedule_date.from_date', [$FromDate, $ToDate]);
-      $q->orwhereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
+      $q->whereBetween('schedule_date.from_date', array($FromDate, $ToDate));
+      $q->WhereBetween('schedule_date.to_date', array($FromDate, $ToDate));
     }
 
     if(isset($input['search_title']))

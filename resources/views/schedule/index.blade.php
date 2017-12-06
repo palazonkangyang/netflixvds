@@ -234,6 +234,56 @@
 			});
     });
 
+    $("#search").click(function() {
+
+      alert('here');
+
+      $(".alert-success").remove();
+
+      var count = 0;
+			var errors = new Array();
+			var validationFailed = false;
+
+      var from_date = $("#from-date").val();
+      var to_date = $("#to-date").val();
+
+      if($.trim(from_date).length <= 0)
+			{
+				validationFailed = true;
+				errors[count++] = "From Date is empty.";
+			}
+
+      if($.trim(to_date).length <= 0)
+			{
+				validationFailed = true;
+				errors[count++] = "To Date is empty.";
+			}
+
+      if (validationFailed)
+			{
+				var errorMsgs = '';
+
+				for(var i = 0; i < count; i++)
+				{
+					errorMsgs = errorMsgs + errors[i] + "<br/>";
+				}
+
+				$('html,body').animate({ scrollTop: 0 }, 'slow');
+
+				$(".alert-danger").addClass("bg-danger alert alert-error");
+				$(".alert-danger").html(errorMsgs);
+
+				return false;
+			}
+
+			else
+			{
+				$(".alert-danger").removeClass("bg-danger alert alert-error");
+				$(".alert-danger").empty();
+			}
+
+    });
+
   });
 
 </script>
