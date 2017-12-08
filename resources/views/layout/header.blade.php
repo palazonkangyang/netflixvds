@@ -33,7 +33,9 @@
     @if(Auth::user()->role == 2)
     <div class="navbar-collapse collapse no-padding-right">
       <ul id="menu-top" class="nav navbar-nav navbar-right">
+        <li><a class="#" href="/videos"><i class="fa fa-video-camera"></i> Videos</a></li>
         <li><a class="#" href="/client/schedules"><i class="fa fa-calendar"></i> Schedules</a></li>
+        <li><a class="#" href="/stores"><i class="fa fa-home"></i> Stores</a></li>
         <li><a class="#" href="/client/setting"><i class="fa fa-cogs"></i> Settings</a></li>
       </ul>
     </div><!-- end navbar-collapse -->
@@ -64,6 +66,8 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
+            <li class="last hover-link"><a href="/faq">FAQ</a></li>
+            <li class="last hover-link"><a href="/usermanual">User Manual</a></li>
             @if(Auth::user()->role != 2)
             <li class="last hover-link"><a href="/auth/logout">Logout</a></li>
             @else

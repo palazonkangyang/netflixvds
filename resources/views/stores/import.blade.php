@@ -61,7 +61,8 @@
 
                 <div class="col-md-12">
                   <p>
-                    Tip: Please browse and select a CSV file to import stores. Get the template <a href="#">here</a>.
+                    Tip: Please browse and select a CSV file to import stores. Get the template
+                    <a href="{{ URL::to('download/store_template.xlsx') }}">here</a>.
                   </p>
                 </div><!-- end col-md-12 -->
 

@@ -99,12 +99,9 @@
       <div class="row">
         <div class="col-md-4 no-padding-left" style="margin: 20px 0;">
           <div class="col-md-7 no-padding-left">
-            <select class="form-control" name="" id="">
-              <option value="0">Remove Selected</option>
-            </select>
+
           </div><!-- end col-md-10 -->
 
-          <button type="submit" class="btn btn-default" id="apply-btn">Apply</button>
         </div><!-- end col-md-4 -->
 
         <div class="col-md-4"></div><!-- end col-md-4 -->

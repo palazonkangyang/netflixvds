@@ -167,4 +167,14 @@ class CommonController extends Controller
 			'user' => $user
 		));
   }
+
+  public function getFAQ()
+  {
+    return view('instruction.faq');
+  }
+
+  public function getUserManual()
+  {
+    return view('instruction.user-manual');
+  }
 }

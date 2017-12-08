@@ -24,6 +24,9 @@ Route::post('/client/login', ['as' => 'client-post-login-page', 'uses' => 'Clien
 
 Route::group(['middleware' => 'auth'], function () {
 
+  Route::get('/faq', ['as' => 'faq-page', 'uses' => 'CommonController@getFAQ']);
+  Route::get('/usermanual', ['as' => 'usermanual-page', 'uses' => 'CommonController@getUserManual']);
+
   Route::get('/search/country-name', ['as' => 'search-country-name-page', 'uses' => 'CommonController@SearchCountryName']);
   Route::get('/get-country-by-partner-id', ['as' => 'get-country-by-partner-id-page', 'uses' => 'CommonController@getCountryByPartnerId']);
   Route::get('/get-store-by-country-id', ['as' => 'get-store-by-country-id-page', 'uses' => 'CommonController@getStoreByCountryId']);

@@ -72,6 +72,8 @@
 
           {!! Form::close() !!}
 
+          @if(Auth::user()->role != 2)
+
           <div class="col-md-1">
             <a href="/stores/import" class="btn btn-default pull-right">Import</a>
           </div><!-- end col-md-2 -->
@@ -79,6 +81,8 @@
           <div class="col-md-1 no-padding-right">
             <a href="/stores/new-store" class="btn btn-default pull-right">New</a>
           </div><!-- end col-md-1 -->
+
+          @endif
 
         </div><!-- end col-md-12 -->
 
@@ -90,13 +94,17 @@
 
         <table class="col-md-12 table-bordered table-striped table-condensed" id="store-lists">
           <thead>
+            @if(Auth::user()->role != 2)
             <th width="3%" class="text-center"><input type="checkbox" id="checkAll"></th>
+            @endif
             <th class="col-md-2">Partner</th>
             <th class="col-md-2">Country</th>
             <th class="col-md-2">Store</th>
             <th class="col-md-2">Contact Name</th>
             <th class="col-md-2">Contact No</th>
+            @if(Auth::user()->role != 2)
             <th class="col-md-1">Action</th>
+            @endif
           </thead>
 
           @if(count($stores) > 0)
@@ -104,16 +112,20 @@
           <tbody>
             @foreach($stores as $data)
             <tr>
+              @if(Auth::user()->role != 2)
               <td class="text-center"><input type="checkbox" name="id[]" value="{{ $data->id }}"></td>
+              @endif
               <td>{{ $data->partner_name }}</td>
               <td>{{ $data->country_name }}</td>
               <td>{{ $data->store_name }}</td>
               <td>{{ $data->contact_name }}</td>
               <td>{{ isset($data->contact_no) ? '+ ' . $data->contact_no : $data->contact_no }}</td>
+              @if(Auth::user()->role != 2)
               <td>
                 <a href="/stores/edit/{{ $data->id }}" class="action">Edit</a> |
                 <a href="/stores/delete/{{ $data->id }}" class="action remove-item">Remove</a>
               </td>
+              @endif
             </tr>
             @endforeach
           </tbody>
@@ -135,12 +147,16 @@
       <div class="row">
         <div class="col-md-4 no-padding-left" style="margin: 20px 0;">
           <div class="col-md-7 no-padding-left">
+            @if(Auth::user()->role != 2)
             <select class="form-control" name="" id="">
               <option value="0">Remove Selected</option>
             </select>
+            @endif
           </div><!-- end col-md-10 -->
 
+          @if(Auth::user()->role != 2)
           <button type="submit" class="btn btn-default" id="apply-btn">Apply</button>
+          @endif
         </div><!-- end col-md-4 -->
 
         <div class="col-md-4"></div><!-- end col-md-4 -->
@@ -242,7 +258,7 @@
     });
 
     $("#store-lists").on('click', '.remove-item', function() {
-      if (!confirm("Are you sure?")){
+      if (!confirm("Screenplay administrator says: You cannot undo this action, are you sure you want to continue?")){
         return false;
       }
     });

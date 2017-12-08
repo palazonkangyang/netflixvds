@@ -302,7 +302,7 @@
     });
 
     $("#user-lists").on('click', '.remove-item', function() {
-      if (!confirm("Are you sure?")){
+      if (!confirm("Screenplay administrator says: You cannot undo this action, are you sure you want to continue?")){
         return false;
       }
     });
