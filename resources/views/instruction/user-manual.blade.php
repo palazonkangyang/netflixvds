@@ -7,9 +7,18 @@
 
     <div class="row">
 
+      @if(Auth::user()->role == 0 || Auth::user()->role == 1)
       <div class="col-md-12">
-        <h4 class="page-head-line">User Manual</h4>
+        <h4 class="page-head-line">User Manual (Admin)</h4>
       </div><!-- end col-md-12 -->
+
+      @else
+
+      <div class="col-md-12">
+        <h4 class="page-head-line">User Manual (Client)</h4>
+      </div><!-- end col-md-12 -->
+
+      @endif
 
     </div><!-- end row -->
 
