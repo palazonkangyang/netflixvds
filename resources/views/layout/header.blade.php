@@ -25,6 +25,7 @@
 
         @if(Auth::user()->role == 0)
         <li><a class="#" href="/settings"><i class="fa fa-cogs"></i> Settings</a></li>
+        <li><a class="#" href="/faq"><i class="fa fa-question-circle"></i> Faq</a></li>
         @endif
       </ul>
     </div><!-- end navbar-collapse -->
@@ -37,6 +38,7 @@
         <li><a class="#" href="/client/schedules"><i class="fa fa-calendar"></i> Schedules</a></li>
         <li><a class="#" href="/stores"><i class="fa fa-home"></i> Stores</a></li>
         <li><a class="#" href="/client/setting"><i class="fa fa-cogs"></i> Settings</a></li>
+        <li><a class="#" href="/faq"><i class="fa fa-question-circle"></i> Faq</a></li>
       </ul>
     </div><!-- end navbar-collapse -->
     @endif
@@ -66,7 +68,6 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
-            <li class="last hover-link"><a href="/faq">FAQ</a></li>
             <li class="last hover-link"><a href="/usermanual">User Manual</a></li>
             @if(Auth::user()->role != 2)
             <li class="last hover-link"><a href="/auth/logout">Logout</a></li>

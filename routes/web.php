@@ -18,6 +18,7 @@ Route::get('/client/login', ['as' => 'client-login-page', 'uses' => 'ClientContr
 Route::get('/client/logout', ['as' => 'client-logout-page', 'uses' => 'ClientController@logout']);
 
 Route::get('/cronjob-video-download/{store_id}', ['as' => 'cronjob-video-download-page', 'uses' => 'CronJobController@getCronJobVideoDownload']);
+Route::get('/cronjob-playlist-download/{store_id}', ['as' => 'cronjob-playlist-page', 'uses' => 'CronJobController@getCronJobPlaylistDownload']);
 
 Route::post('/account/login', ['as' => 'post-login-page', 'uses' => 'AuthController@postAuthenticate']);
 Route::post('/client/login', ['as' => 'client-post-login-page', 'uses' => 'ClientController@postAuthenticate']);

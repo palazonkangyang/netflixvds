@@ -92,7 +92,7 @@
             <li>Admin can search/ filter by country name, keyword is to search the country name.</li>
           </ul>
 
-          <h5 class="sub-head-line">Users Module</h5>
+          <h5 class="sub-head-line">User Module</h5>
 
           <ul class="instruction-listing">
             <li>Show all user listings.</li>

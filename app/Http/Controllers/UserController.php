@@ -75,18 +75,11 @@ class UserController extends Controller
     $countries = [];
     $stores = [];
 
+    // dd($input);
+
     $partners = Partner::orderBy('id', 'asc')->get();
 
     $q = User::query();
-
-    if(isset($input['username']))
-    {
-      $keyword = trim($input['username']);
-
-      $q->where('username', 'like', '%' . $keyword . '%');
-      // $q->orwhere('full_name', 'like', '%' . $keyword . '%');
-      // $q->orwhere('email', 'like', '%' . $keyword . '%');
-    }
 
     if($input['store_id'] != 0)
     {
@@ -110,12 +103,28 @@ class UserController extends Controller
                    ->get();
     }
 
+    if(isset($input['username']))
+    {
+      $keyword = trim($input['username']);
+
+      $q->where('username', 'like', '%' . $keyword . '%');
+      // $q->where('full_name', 'like', '%' . $keyword . '%');
+      // $q->where('email', 'like', '%' . $keyword . '%');
+      // $q->where(function ($query) use ($keyword)
+      // {
+      //   $query->where('full_name', 'like', '%' . $keyword . '%');
+      //   $query->where('email', 'like', '%' . $keyword . '%');
+      // });
+    }
+
     $users = $q->leftjoin('store', 'users.store_id', '=', 'store.id')
              ->leftjoin('country', 'users.country_id', '=', 'country.id')
              ->leftjoin('partner', 'users.partner_id', '=', 'partner.id')
              ->select('users.*', 'partner.partner_name', 'country.country_name', 'store.store_name')
              ->orderBy('users.id', 'asc')
-             ->paginate(10);
+             ->get();
+
+    dd($users->toArray());
 
     for($i = 0; $i < count($users); $i++)
     {

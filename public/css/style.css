@@ -67,6 +67,14 @@ body {
   text-transform: uppercase;
   color: #21201e;
   font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.heading6{
+  font-family: 'netflixfontbold', sans-serif;
+  color: #21201e;
+  font-size: 13px;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 
@@ -80,6 +88,10 @@ body {
 
 .instruction-listing li{
   padding-bottom: 7px;
+}
+
+.paragraph{
+  margin-bottom: 40px;
 }
 
 .btn {
