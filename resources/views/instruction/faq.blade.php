@@ -36,7 +36,7 @@
             <ol>
               <li>You closed the browser before uploading was closed.</li>
               <li>You tried to upload a file which is bigger than 512MB. Please inform admin or
-                <a href="mailto:support@palazon.com" target="_top">Palazon(support@palazon.com)</a> to adjust accordingly.</li>
+                <a href="mailto:support@palazon.com">Palazon (support@palazon.com)</a> to adjust accordingly.</li>
             </ol>
           </p>
 
