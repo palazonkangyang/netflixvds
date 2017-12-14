@@ -31,99 +31,93 @@
           <h5 class="sub-head-line">Video Module</h5>
 
           <ul class="instruction-listing">
-            <li>Show all video listings.</li>
-            <li>Upload new video by clicking on "Upload New" button.</li>
-            <li>When clicking on video page, there have Code, Title, Description, Duration, Category and Upload fields.
-              All the fields are mandatory except description and duration fields.
+            <li>Shows all video listings.</li>
+            <li>Admin can upload a new video by clicking on "Upload New" button.</li>
+            <li>When uploading a new video. All the fields are mandatory except description and duration fields.
             </li>
             <li>Admin can edit and remove the selected video information.</li>
             <li>Admin can remove multiple videos by clicking on the checkbox field.</li>
-            <li>Admin can search/ filter the videos by date range, category and keywords, keyword will search code, title and description.</li>
+            <li>Admin can search/- filter the videos by date range, category and keywords - keywords entered will be searched in code, title and description fields.</li>
           </ul>
 
           <h5 class="sub-head-line">Schedule Module</h5>
 
           <ul class="instruction-listing">
-            <li>Show all schedule listings.</li>
-            <li>Admin can create new schedule by clicking on "New" button.</li>
-            <li>When clicking on schedule page, there have Partner, Store, Date and Video fields. All the fields are mandatory.</li>
+            <li>Shows all schedule listings.</li>
+            <li>Admin can create a new schedule by clicking on "New" button.</li>
+            <li>When uploading a new schedule, All the fields are mandatory.</li>
             <li>Admin can edit and remove the selected schedule information.</li>
             <li>Admin can remove multiple schedules by clicking on the checkbox field.</li>
-            <li>Admin can search/ filter and records by date range, partner, country, store, category and keyword, keyword is to search the video title.</li>
+            <li>Admin can search/- filter records by date range, partner, country, store, category and keywords - keywords entered searches for video title.</li>
           </ul>
 
           <h5 class="sub-head-line">Store Module</h5>
 
           <ul class="instruction-listing">
-            <li>Show all store listings.</li>
-            <li>Admin can create new store by clicking on "New" button.</li>
-            <li>When clicking on store page, there have Partner, Country, Store Name, Description, Contact Name and Contact No fields.
-              All the fields are mandatory except Description, Contact Name and Contact No fields.
+            <li>Shows all store listings.</li>
+            <li>Admin can create a new store profile by clicking on "New" button.</li>
+            <li>When creating a new store profile, all the fields are mandatory except the description, contact name and contact no fields.
             </li>
             <li>Admin can edit and remove the selected store information.</li>
             <li>Admin can remove multiple stores by clicking on the checkbox field.</li>
-            <li>Admin can search/ filter the stores by partner, country and keyword, keyword is to search store name.</li>
-            <li>Admin can import new stores using csv file by clicking on "Import" button.</li>
+            <li>Admin can search/- filter stores by partner, country and keyword - keyword entered searches for store name.</li>
+            <li>Admin can import a list of new stores by clicking on "Import" button.</li>
+            <li>Download .csv file template, enter information accordingly then upload file.</li>
           </ul>
 
           <h5 class="sub-head-line">Settings Module</h5>
 
           <ul class="instruction-listing">
-            <li>Admin can manage Global, Countries, Users and Partners module.</li>
+            <li>Admin profiles have access to Global, Countries, Users and Partners module.</li>
           </ul>
 
           <h5 class="sub-head-line">Global Module</h5>
 
           <ul class="instruction-listing">
-            <li>Admin can update SMTP setting to send the email.</li>
-            <li>When clicking on Global Page, there have SMTP Host, SMTP Username, SMTP Password, SMTP Port and Require SSL.
-              All the fields are mandatory except Require SSL fields.
+            <li>Admin can update SMTP setting to send emails.</li>
+            <li>When updating on SMTP Settings, all the fields are mandatory except require SSL field.
             </li>
           </ul>
 
           <h5 class="sub-head-line">Country Module</h5>
 
           <ul class="instruction-listing">
-            <li>Show all country listings.</li>
+            <li>Shows all country listings.</li>
             <li>Admin can create new country by clicking on "New" button.</li>
-            <li>When clicking on New Country and Edit Country Page. There has Country Name field. The field is mandatory.</li>
-            <li>Admin can edit and remove the country.</li>
-            <li>When stores are created under the country that cannot be removed it. Unless stores have been deleted.</li>
-            <li>Admin can search/ filter by country name, keyword is to search the country name.</li>
+            <li>Admin can edit and remove countries from the list.</li>
+            <li>When stores are created under the country that cannot be removed it. Unless stores have been deleted.
+              When there are existing stores listed under a country, that country cannot be removed until the corresponding stores have been deleted.
+            </li>
+            <li>Admin can search/- filter by country name.</li>
           </ul>
 
           <h5 class="sub-head-line">User Module</h5>
 
           <ul class="instruction-listing">
-            <li>Show all user listings.</li>
-            <li>Admin can create new user by clicking on "New" Button.</li>
-            <li>When clicking on New Partner and Edit Partner Page, there have Username, Password,
-              Confirm Password, Full Name, Email Address, Role, Partner, Country, Store fields.
-              All the fields are mandatory.</li>
-            <li>Partner, Country and Store are shown by choosing on Role field.</li>
-            <li>Choose Partner field first, country listings will be shown and then choose Country field,
-              Store listings will be shown in the dropdown list.
-            </li>
+            <li>Shows all user listings.</li>
+            <li>Admin can create a new user by clicking on "New" Button.</li>
+            <li>When creating a new user, all the fields are mandatory.</li>
+            <li>Admin can add new user as Administrator, Operator or Client under the role field.</li>
             <li>Admin can edit and remove the selected user information.</li>
             <li>Admin can remove multiple users by checking on the checkbox field.</li>
-            <li>Admin can search/ filter by partner, country, store and username, keyword is to search the username.</li>
+            <li>Admin can search/- filter by partner, country, store and username - keyword searches the username field.</li>
           </ul>
 
           <h5 class="sub-head-line">Role Module</h5>
 
           <ul class="instruction-listing">
-            <li>The list of roles and permissions are shown in role page.</li>
+            <li>The list of roles and permissions are shown here.</li>
           </ul>
 
           <h5 class="sub-head-line">Partner Module</h5>
 
           <ul class="instruction-listing">
-            <li>Show all partner listings.</li>
-            <li>Admin can create new partner by clicking on "New" button.</li>
-            <li>When clicking on New Partner and Edit Partner Page, there have partner name, country name fields. These two fields are mandatory.</li>
+            <li>Shows all partner listings.</li>
+            <li>Admin can create a new partner by clicking on "New" button.</li>
+            <li>When adding or editing partners, all fields are mandatory.</li>
             <li>Admin can edit and remove the selected partner information.</li>
             <li>Admin can remove multiple partners by checking on the checkbox field.</li>
-            <li>When stores are created under the partner that cannot be removed it. Unless stores have been deleted.</li>
+            <li>When there are existing stores listed under a partner, that partner cannot be removed until the corresponding stores have been deleted.</li>
           </ul>
         </div><!-- end col-md-12 -->
         @endif
