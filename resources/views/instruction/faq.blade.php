@@ -110,16 +110,16 @@
 
           <h5 class="sub-head-line">Store Module</h5>
 
-          <h6 class="heading6">Q: Why Country’s dropdown list is empty?</h6>
+          <h6 class="heading6">Q: Why is the Country dropdown list empty?</h6>
           <p class="paragraph">
-            A: You need to select Partner first, then respective country for that partner will be shown in dropdown list.
+            A: You need to select a Partner first, then respective countries for that partner will be shown in the dropdown list.
           </p>
 
           <h5 class="sub-head-line">Settings Module</h5>
 
-          <h6 class="heading6">Q: Are all the fields in the forms needed to be entered?</h6>
+          <h6 class="heading6">Q: Are all fields in the forms required?</h6>
           <p class="paragraph">
-            A: Yes, all the fields with the red asterisks symbol are compulsory to be entered.
+            A: Yes, all fields with red asterisks are required.
           </p>
 
         </div><!-- end col-md-12 -->
