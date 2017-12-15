@@ -390,7 +390,7 @@ DASHBOARD  STYLES
 
 .notice-board li a, li a:hover {
   text-decoration: none;
-  color: #000;
+  /* color: #000; */
 }
 
 /* SOCIAL BUTTONS */
