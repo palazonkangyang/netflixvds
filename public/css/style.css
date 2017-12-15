@@ -66,7 +66,7 @@ body {
   border-bottom: none;
   text-transform: uppercase;
   color: #21201e;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 5px;
 }
 
@@ -423,6 +423,10 @@ DASHBOARD  STYLES
 
 #select-client, #select-operator{
   display: none;
+}
+
+ol > li {
+  padding-bottom: 7px;
 }
 
 .no-padding-left{
