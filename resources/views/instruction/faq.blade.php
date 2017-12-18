@@ -49,7 +49,7 @@
 
           <h6 class="heading6">Q: How can I upload new stores to the system?</h6>
           <p>
-            A: You can only upoad new stores in CSV format <a href="{{ URL::to('download/store_template.xlsx') }}">template here</a> -
+            A: You can only upoad new stores in CSV format <a href="{{ URL::to('download/store_template.csv') }}">template here</a> -
             Leave the headers unchanged and insert the stores detail' fields:- store_name, partner_name and country_name need to be
             reflected the same in the system.
           </p>
