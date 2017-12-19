@@ -202,13 +202,13 @@ class StoreController extends Controller
 
     if($cnt->arr)
     {
-      $request->session()->flash('success', 'Cannot Import line no: ' . implode(',', $cnt->arr));
+      $request->session()->flash('success', 'Please check the respective countries and partners in the following lines: ' . implode(', ', $cnt->arr) . '.');
     }
 
-    elseif($cnt->arr1)
-    {
-      $request->session()->flash('success', 'Not Belong to Country: ' . implode(',', $cnt->arr1));
-    }
+    // elseif($cnt->arr1)
+    // {
+    //   $request->session()->flash('success', 'Cannot Import line no: ' . implode(',', $cnt->arr1) . '. Please check the respective countries and partners in the following lines.');
+    // }
 
     else
     {

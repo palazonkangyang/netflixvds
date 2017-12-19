@@ -145,15 +145,20 @@ class ScheduleController extends Controller
     if(isset($input['from_date']) && isset($input['to_date']))
     {
       $from_date = $input['from_date'];
-      $date = str_replace('/', '-', $input['from_date']);
-      $FromDate = date("Y-m-d", strtotime($date));
+      $fromdate = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($fromdate));
 
       $to_date = $input['to_date'];
-      $date = str_replace('/', '-', $input['to_date']);
-      $ToDate = date("Y-m-d", strtotime($date));
+      $todate = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($todate));
 
       $q->whereBetween('schedule_date.from_date', array($FromDate, $ToDate));
       $q->WhereBetween('schedule_date.to_date', array($FromDate, $ToDate));
+
+      // $q->where(function($query) use ($FromDate, $ToDate) {
+      //   $query->whereBetween('schedule_date.from_date', array($FromDate, $ToDate));
+      //   $query->WhereBetween('schedule_date.to_date', array($FromDate, $ToDate));
+      // });
     }
 
     if(isset($input['search_title']))
