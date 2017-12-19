@@ -33,7 +33,7 @@ class ImportStores extends Job
     $cnt->all = 0;
     $cnt->error = 0;
     $cnt->arr = array();
-    // $cnt->arr1 = array();
+    $cnt->arr1 = array();
 
     \Excel::load( $this->request->file( 'file' ), function ( $reader ) use ( $cnt) {
       $data = $reader->get();
@@ -42,12 +42,19 @@ class ImportStores extends Job
       {
         $cnt->error++;
 
+        $store = Store::where('store_name', trim($d->store_name))->first();
+
         $country = Country::where('country_name', trim($d->country_name))->first();
         $partner = Partner::where('partner_name', trim($d->partner_name))->first();
 
         if(!$country || !$partner)
         {
           array_push($cnt->arr, $cnt->error);
+        }
+
+        else if($store)
+        {
+          array_push($cnt->arr1, $cnt->error);
         }
 
         else
