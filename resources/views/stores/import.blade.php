@@ -61,7 +61,11 @@
 
                 <div class="col-md-12">
                   <p>
-                    Tip: Please browse and select a CSV file to import stores. Get the template
+                    Tip: If you want to add stores from a new partner, you will have to create a new
+                    partner before you are able to import new list of stores.
+                  </p>
+                  <p>
+                    Please browse and select a CSV file to import stores. Get the template
                     <a href="{{ URL::to('download/store_template.csv') }}">here</a>.
                   </p>
                 </div><!-- end col-md-12 -->

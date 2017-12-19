@@ -154,11 +154,6 @@ class ScheduleController extends Controller
 
       $q->whereBetween('schedule_date.from_date', array($FromDate, $ToDate));
       $q->WhereBetween('schedule_date.to_date', array($FromDate, $ToDate));
-
-      // $q->where(function($query) use ($FromDate, $ToDate) {
-      //   $query->whereBetween('schedule_date.from_date', array($FromDate, $ToDate));
-      //   $query->WhereBetween('schedule_date.to_date', array($FromDate, $ToDate));
-      // });
     }
 
     if(isset($input['search_title']))
