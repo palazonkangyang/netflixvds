@@ -71,8 +71,6 @@ class UserController extends Controller
   {
     $input = array_except($request->all(), '_token');
 
-    // dd($input);
-
     $keyword = "";
     $countries = [];
     $stores = [];

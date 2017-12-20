@@ -76,7 +76,7 @@
           </div><!-- end col-md-2 -->
 
           <div class="col-md-1">
-            <button type="submit" class="btn btn-default">Search</button>
+            <button type="submit" class="btn btn-default" id="search">Search</button>
           </div><!-- end col-md-1 -->
 
           <div class="col-md-1 no-padding-left no-padding-right pull-right" style="width: 5%;">
@@ -97,7 +97,7 @@
             </select>
           </div><!-- end col-md-2 -->
 
-          <div class="col-md-2">
+          <div class="col-md-3">
             <input type="text" name="search_title" placeholder="Keyword" class="form-control">
           </div><!-- end col-md-2 -->
 
@@ -235,8 +235,6 @@
     });
 
     $("#search").click(function() {
-
-      alert('here');
 
       $(".alert-success").remove();
 
