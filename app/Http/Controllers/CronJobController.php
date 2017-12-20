@@ -49,7 +49,6 @@ class CronJobController extends Controller
                   ->select('client_setting.auto_update', 'time_zone.utc')
                   ->get();
 
-
       $auto_update = strtotime($timezone[0]->auto_update);
       $utc_time = strtotime($timezone[0]->utc);
 
@@ -83,7 +82,7 @@ class CronJobController extends Controller
               ->select('video_name')
               ->get();
 
-    $path = 'playlists/';
+    $path = 'playlists/' . $store_id . '/';
     $filename = 'playlist.m3u8';
 
     if(count($videos) > 0)
