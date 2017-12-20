@@ -71,34 +71,53 @@ class UserController extends Controller
   {
     $input = array_except($request->all(), '_token');
 
+    // dd($input);
+
     $keyword = "";
     $countries = [];
     $stores = [];
+
+    $store_id = "";
+    $country_id = "";
+    $partner_id = "";
 
     $partners = Partner::orderBy('id', 'asc')->get();
 
     $q = User::query();
 
-    if($input['store_id'] != 0)
+    if(isset($input['store_id']))
     {
-      $q->where('users.store_id', '=', $input['store_id']);
+      if($input['store_id'] != 0)
+      {
+        $q->where('users.store_id', '=', $input['store_id']);
+
+        $store_id = $input['store_id'];
+      }
     }
 
-    if($input['country_id'] != 0)
+    if(isset($input['country_id']))
     {
-      $q->where('users.country_id', '=', $input['country_id']);
+      if($input['country_id'] != 0)
+      {
+        $q->where('users.country_id', '=', $input['country_id']);
 
-      $stores = Store::where('country_id', $input['country_id'])->get();
+        $stores = Store::where('country_id', $input['country_id'])->get();
+
+        $country_id = $input['country_id'];
+      }
     }
 
-    if($input['partner_id'] != 0)
+    if(isset($input['partner_id']))
     {
-      $q->where('users.partner_id', '=', $input['partner_id']);
+      if($input['partner_id'] != 0)
+      {
+        $q->where('users.partner_id', '=', $input['partner_id']);
 
-      $countries = PartnerCountry::leftjoin('country', 'partner_country.country_id', '=', 'country.id')
-                   ->where('partner_country.partner_id', $input['partner_id'])
-                   ->orderBy('country.id', 'asc')
-                   ->get();
+        $countries = PartnerCountry::leftjoin('country', 'partner_country.country_id', '=', 'country.id')
+                     ->where('partner_country.partner_id', $input['partner_id'])
+                     ->orderBy('country.id', 'asc')
+                     ->get();
+      }
     }
 
     if(isset($input['username']))
@@ -152,9 +171,9 @@ class UserController extends Controller
       "users" => $users,
       "countries" => $countries,
       "stores" => $stores,
-      "partner_id" => $input['partner_id'],
-      "country_id" => $input['country_id'],
-      "store_id" => $input['store_id'],
+      "partner_id" => $partner_id,
+      "country_id" => $country_id,
+      "store_id" => $store_id,
       "keyword" => $keyword
     ]);
   }

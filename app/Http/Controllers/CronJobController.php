@@ -133,7 +133,7 @@ class CronJobController extends Controller
       File::append($path . $filename, $content);
     }
 
-    $playlist = URL::to('/') . '/' . $path . $filename;
+    $playlist[0]['file_url'] = URL::to('/') . '/' . $path . $filename;
 
     return response()->json([
       'playlist' => $playlist
