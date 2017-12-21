@@ -124,8 +124,6 @@ class ScheduleController extends Controller
   {
     $input = array_except($request->all(), '_token');
 
-    // dd($input);
-
     $partners = Partner::all();
     $categories = Category::all();
 
@@ -297,7 +295,7 @@ class ScheduleController extends Controller
       'schedule_date' => $schedule_date,
       'schedule_store' => $schedule_store,
       'schedule_video' => $schedule_video,
-      'partner_id' => $id
+      'partner_id' => $schedule_store[0]->partner_id
     ]);
   }
 
