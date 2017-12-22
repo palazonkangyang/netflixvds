@@ -32,7 +32,7 @@
 
           <h6 class="heading6">Q: Why do video uploads sometimes fail?</h6>
           <p>
-            A: There is two possibilities: -
+            A: There are two possibilities: -
             <ol>
               <li>You closed the browser before uploading was closed.</li>
               <li>You tried to upload a file which is bigger than 512MB. Please inform admin or
