@@ -85,9 +85,12 @@ class CronJobController extends Controller
     $path = 'playlists/' . $store_id . '/';
     $filename = 'playlist.m3u8';
 
-    if($store_id == 0)
+    if(count($videos) > 0)
     {
-      $video_lists = ["Dnote.mp4", "data.mp4"];
+      if(!is_dir($path))
+      {
+        mkdir($path, 0777);
+      }
 
       $content = "#EXTM3U\n\n";
       File::put($path . $filename, $content);
@@ -101,9 +104,9 @@ class CronJobController extends Controller
       $content = "#EXT-X-MEDIA-SEQUENCE:0\n\n";
       File::append($path . $filename, $content);
 
-      foreach($video_lists as $data)
+      foreach($videos as $data)
       {
-        $content = $data . "\n";
+        $content = $data->video_name . "\n";
         File::append($path . $filename, $content);
       }
 
@@ -113,52 +116,20 @@ class CronJobController extends Controller
 
     else
     {
-      if(count($videos) > 0)
-      {
-        if(!is_dir($path))
-        {
-          mkdir($path, 0777);
-        }
+      $content = "#EXTM3U\n\n";
+      File::put($path . $filename, $content);
 
-        $content = "#EXTM3U\n\n";
-        File::put($path . $filename, $content);
+      $content = "#EXT-X-PLAYLIST-TYPE:VOD\n";
+      File::append($path . $filename, $content);
 
-        $content = "#EXT-X-PLAYLIST-TYPE:VOD\n";
-        File::append($path . $filename, $content);
+      $content = "#EXT-X-VERSION:\n";
+      File::append($path . $filename, $content);
 
-        $content = "#EXT-X-VERSION:\n";
-        File::append($path . $filename, $content);
+      $content = "#EXT-X-MEDIA-SEQUENCE:0\n\n";
+      File::append($path . $filename, $content);
 
-        $content = "#EXT-X-MEDIA-SEQUENCE:0\n\n";
-        File::append($path . $filename, $content);
-
-        foreach($videos as $data)
-        {
-          $content = $data->video_name . "\n";
-          File::append($path . $filename, $content);
-        }
-
-        $content = "\n#EXT-X-ENDLIST";
-        File::append($path . $filename, $content);
-      }
-
-      else
-      {
-        $content = "#EXTM3U\n\n";
-        File::put($path . $filename, $content);
-
-        $content = "#EXT-X-PLAYLIST-TYPE:VOD\n";
-        File::append($path . $filename, $content);
-
-        $content = "#EXT-X-VERSION:\n";
-        File::append($path . $filename, $content);
-
-        $content = "#EXT-X-MEDIA-SEQUENCE:0\n\n";
-        File::append($path . $filename, $content);
-
-        $content = "\n#EXT-X-ENDLIST";
-        File::append($path . $filename, $content);
-      }
+      $content = "\n#EXT-X-ENDLIST";
+      File::append($path . $filename, $content);
     }
 
     $playlist[0]['file_url'] = URL::to('/') . '/' . $path . $filename;

@@ -63,7 +63,7 @@
             </select>
           </div><!-- end col-md-2 -->
 
-          <div class="col-md-2">
+          <div class="col-md-3">
             <input type="text" name="search_title" placeholder="Keyword" class="form-control" value="{{ $search_title }}">
           </div><!-- end col-md-2 -->
 
