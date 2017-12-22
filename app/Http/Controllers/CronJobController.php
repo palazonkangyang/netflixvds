@@ -37,6 +37,7 @@ class CronJobController extends Controller
               ->where('schedule_date.from_date', '<=', $today)
               ->where('schedule_date.to_date', '>=', $today)
               ->select('video_name', 'video_path', 'schedule_date.time_zone_id')
+              ->orderBy('schedule_video.sequence', 'asc')
               ->get();
 
     if(count($videos) > 0)
