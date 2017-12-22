@@ -78,7 +78,7 @@
                   <div class="form-group">
                     <label class="col-md-2">Auto Update <span class="text-danger">*</span></label>
           		    	<div class="col-md-6">
-                      {!! Form::text('auto_update', NULL, ['class'=>'form-control auto-update', 'id'=>'auto-update']) !!}
+                      {!! Form::text('auto_update', NULL, ['class'=>'form-control auto-update', 'id'=>'auto-update', 'data-step'=>'60', 'data-time-format'=>'H:i', 'data-min-time'=>'23:00', 'data-max-time'=>'09:00', 'data-show-2400'=>'true']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->
 
@@ -109,13 +109,13 @@
 
 @section('custom-css')
 
-<link rel="stylesheet" href="{{ asset('/css/wickedpicker.min.css') }}" />
+<link rel="stylesheet" href="{{ asset('/css/jquery.timepicker.css') }}" />
 
 @stop
 
 @section('custom-js')
 
-<script type="text/javascript" src="{{ asset('/js/wickedpicker.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/jquery.timepicker.js') }}"></script>
 
 <script type="text/javascript">
 
@@ -123,13 +123,8 @@
 
     var auto_update = "<?= isset($client_setting->auto_update) ? $client_setting->auto_update : '00 : 00'  ?>";
 
-    var options = {
-      now: auto_update, //hh:mm 24 hour format only, defaults to current time
-      twentyFour: true,  //Display 24 hour format, defaults to false
-    };
-
-    $('.auto-update').wickedpicker(options);
-
+    $('#auto-update').timepicker();
+    $('#auto-update').val(auto_update);
   });
 
 </script>

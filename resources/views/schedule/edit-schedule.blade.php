@@ -407,7 +407,7 @@
         $(".alert-danger").removeClass("bg-danger alert alert-error");
         $(".alert-danger").empty();
       }
-      
+
     });
 
     $("#add-video-btn").click(function(e) {
