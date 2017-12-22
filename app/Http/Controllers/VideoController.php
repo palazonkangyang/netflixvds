@@ -100,6 +100,7 @@ class VideoController extends Controller
     $videos = $q->leftjoin('category', 'video.category_id', '=', 'category.id')
               ->select('video.*', 'category.category_name')
               ->orderBy('video.date', 'desc')
+              ->orderBy('video.title', 'asc')
               ->paginate(10);
 
     foreach($videos as $data)
