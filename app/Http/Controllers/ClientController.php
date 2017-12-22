@@ -113,39 +113,18 @@ class ClientController extends Controller
     if(isset($input['from_date']) && isset($input['to_date']))
     {
       $from_date = $input['from_date'];
-      $date = str_replace('/', '-', $input['from_date']);
-      $FromDate = date("Y-m-d", strtotime($date));
+      $fromdate = str_replace('/', '-', $input['from_date']);
+      $FromDate = date("Y-m-d", strtotime($fromdate));
 
       $to_date = $input['to_date'];
-      $date = str_replace('/', '-', $input['to_date']);
-      $ToDate = date("Y-m-d", strtotime($date));
+      $todate = str_replace('/', '-', $input['to_date']);
+      $ToDate = date("Y-m-d", strtotime($todate));
 
-      $q->whereBetween('schedule_date.from_date', [$FromDate, $ToDate]);
-      $q->orwhereBetween('schedule_date.to_date', [$FromDate, $ToDate]);
+      $q->where(function($query) use ($FromDate, $ToDate){
+        $query->whereBetween('schedule_date.from_date', array($FromDate, $ToDate));
+        $query->orWhereBetween('schedule_date.to_date', array($FromDate, $ToDate));
+      });
     }
-
-    else if(isset($input['from_date']))
-    {
-      $from_date = $input['from_date'];
-      $date = str_replace('/', '-', $input['from_date']);
-      $FromDate = date("Y-m-d", strtotime($date));
-
-      $q->where('schedule_date.from_date', '<=', $FromDate);
-      $q->orwhere('schedule_date.to_date', '>=', $FromDate);
-    }
-
-    else if(isset($input['to_date']))
-    {
-      $to_date = $input['to_date'];
-      $date = str_replace('/', '-', $input['to_date']);
-      $ToDate = date("Y-m-d", strtotime($date));
-
-      $q->orwhere('schedule_date.from_date', '<=', $ToDate);
-      $q->where('schedule_date.to_date', '>=', $ToDate);
-    }
-
-    else
-    {}
 
     if(isset($input['search_title']))
     {
