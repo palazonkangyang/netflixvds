@@ -41,11 +41,11 @@
 
               <div class="row form-area-with-inputs">
   	            <div class="col-md-12">
-                  {!!Form::open(['class'=>'submit_now', 'enctype' => 'multipart/form-data'])!!}
+                  {!!Form::open(['id'=>'import', 'enctype' => 'multipart/form-data'])!!}
 
                   <div class="form-group">
           		    	<div class="col-md-5 no-padding-left" style="margin-top:20px;">
-          		    	  {!! Form::file('file', NULL, ['class'=>'form-control import', 'id'=>'import']) !!}
+          		    	  {!! Form::file('file', ['id'=>'import-file']) !!}
           		    	</div>
           		  	</div><!-- end form-group -->
 
@@ -84,5 +84,55 @@
 
   </div><!-- end container -->
 </div><!-- end content-wrapper -->
+
+@stop
+
+@section('custom-js')
+
+<script type="text/javascript">
+
+  $(function() {
+
+    $("#import").submit(function() {
+
+      $(".alert-success").remove();
+
+      var count = 0;
+      var errors = new Array();
+      var validationFailed = false;
+
+      if ($('#import-file').get(0).files.length === 0) {
+        validationFailed = true;
+        errors[count++] = "Please select import file.";
+      }
+
+      if (validationFailed)
+      {
+        var errorMsgs = '';
+
+        for(var i = 0; i < count; i++)
+        {
+          errorMsgs = errorMsgs + errors[i] + "<br/>";
+        }
+
+        $('html,body').animate({ scrollTop: 0 }, 'slow');
+
+        $(".alert-danger").addClass("bg-danger alert alert-error");
+        $(".alert-danger").html(errorMsgs);
+
+        return false;
+      }
+
+      else
+      {
+        $(".alert-danger").removeClass("bg-danger alert alert-error");
+        $(".alert-danger").empty();
+      }
+
+    });
+
+  });
+
+</script>
 
 @stop
